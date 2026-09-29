@@ -1,0 +1,7 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>出店情報｜橘祭</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header class="header"><div class="shell nav"><a class="brand" href="/">橘祭</a><nav class="navlinks"><a href="/">HOME</a><a href="/stage.html">STAGE</a><a href="/shops.html">SHOP</a></nav></div></header>
+<main class="section"><div class="shell"><div class="kicker" style="color:var(--green)">SHOP</div><h1 style="font-size:clamp(48px,9vw,88px);color:var(--ink)">出店情報</h1>
+<div class="card"><h3>学内 出店マップ</h3><div class="image-slot" id="map"></div></div><div class="searchbar"><input id="q" placeholder="出店番号・店名・販売内容で検索"><button id="search">検索</button></div><div class="list" id="list"></div></div></main><footer class="footer"><div class="shell">橘祭</div></footer>
+<script src="/app.js"></script><script>
+(async()=>{const d=await api("/api/public");map.innerHTML=imageHTML(d.settings.shop_map,"出店マップ");list.innerHTML=d.shops.map(x=>`<div class="item shop-item"><div class="shop-no">#${esc(x.shop_no)}</div><div class="name">${esc(x.name)}</div><div class="meta">${esc(x.sells)}</div></div>`).join("")||'<p class="lead">情報は準備中です。</p>';search.onclick=()=>searchAndScroll("#q",".shop-item");q.onkeydown=e=>{if(e.key==="Enter")search.click()}})().catch(e=>list.innerHTML=`<p>${esc(e.message)}</p>`);
+</script></body></html>

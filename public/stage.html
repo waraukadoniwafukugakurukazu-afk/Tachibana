@@ -1,0 +1,9 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ステージ情報｜橘祭</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header class="header"><div class="shell nav"><a class="brand" href="/">橘祭</a><nav class="navlinks"><a href="/">HOME</a><a href="/stage.html">STAGE</a><a href="/shops.html">SHOP</a></nav></div></header>
+<main class="section"><div class="shell"><div class="kicker" style="color:var(--green)">STAGE</div><h1 style="font-size:clamp(48px,9vw,88px);color:var(--ink)">ステージ情報</h1>
+<div class="card"><h3>全体ステージ予定</h3><div class="image-slot" id="schedule"></div></div><div class="searchbar"><input id="q" placeholder="ステージ名・時間などで検索"><button id="search">検索</button></div><div id="days"></div></div></main><footer class="footer"><div class="shell">橘祭</div></footer>
+<script src="/app.js"></script><script>
+(async()=>{const d=await api("/api/public");schedule.innerHTML=imageHTML(d.settings.stage_schedule,"全体ステージ予定");
+const day=(n,label)=>`<section class="day"><div class="dayhead"><h2>${n}日目</h2><div class="daydate">${esc(label||"")}</div></div><div class="list">${d.stages.filter(x=>x.day===n).map(x=>`<div class="item stage-item"><div class="name">${esc(x.name)}</div><div class="meta">${esc(x.time)}</div><div class="badge ${x.joinable?"":"no"}">${x.joinable?"参加可能":"参加不可能"}</div></div>`).join("")||'<p class="lead">情報は準備中です。</p>'}</div></section>`;
+days.innerHTML=day(1,d.settings.day1)+day(2,d.settings.day2);search.onclick=()=>searchAndScroll("#q",".stage-item");q.onkeydown=e=>{if(e.key==="Enter")search.click()}})().catch(e=>days.innerHTML=`<p>${esc(e.message)}</p>`);
+</script></body></html>
