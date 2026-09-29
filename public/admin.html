@@ -1,20 +1,82 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>管理画面｜橘祭</title><link rel="stylesheet" href="/styles.css"></head><body>
-<div id="login" class="login"><div class="card"><div class="kicker" style="color:var(--green)">ADMIN</div><h2>橘祭 管理画面</h2><div class="field"><label>パスワード</label><input id="pw" type="password" inputmode="numeric"></div><button id="loginBtn">ログイン</button><div id="loginStatus" class="status"></div></div></div>
-<div id="panel" class="hidden"><header class="header"><div class="shell nav"><a class="brand" href="/">橘祭</a><nav class="navlinks"><a href="/">サイトを見る</a><a href="#" id="logout">ログアウト</a></nav></div></header><main class="admin-wrap"><h1 style="font-size:52px;color:var(--ink)">管理画面</h1><div class="note">ここで保存した内容はCloudflare D1 / R2に保存され、来場者全員のサイトへ反映されます。</div>
-<section class="card"><h2>トップページ・画像</h2><div class="field"><label>学祭紹介</label><textarea id="intro"></textarea></div><div class="admin-grid"><div class="field"><label>1日目の日付</label><input id="day1"></div><div class="field"><label>2日目の日付</label><input id="day2"></div></div><button id="saveSettings">文章・日付を保存</button><div class="admin-grid"><div class="field"><label>大学所在地 地図</label><input type="file" accept="image/*" data-kind="campus_map"></div><div class="field"><label>学内マップ</label><input type="file" accept="image/*" data-kind="inside_map"></div><div class="field"><label>全体ステージ予定</label><input type="file" accept="image/*" data-kind="stage_schedule"></div><div class="field"><label>学内 出店マップ</label><input type="file" accept="image/*" data-kind="shop_map"></div></div><div id="imageStatus" class="status"></div></section>
-<section class="card" style="margin-top:18px"><h2>ステージ</h2><div class="admin-grid"><div class="field"><label>日</label><select id="sday"><option value="1">1日目</option><option value="2">2日目</option></select></div><div class="field"><label>ステージ名</label><input id="sname"></div><div class="field"><label>ステージの時間</label><input id="stime" placeholder="10:00〜10:30"></div><div class="field"><label>参加</label><select id="sjoin"><option value="1">参加可能</option><option value="0">参加不可能</option></select></div></div><button id="addStage">追加</button><div id="stages"></div></section>
-<section class="card" style="margin-top:18px"><h2>出店</h2><div class="admin-grid"><div class="field"><label>出店番号</label><input id="pno"></div><div class="field"><label>店名</label><input id="pname"></div><div class="field"><label>何を売っているか</label><input id="psells"></div></div><button id="addShop">追加</button><div id="shops"></div></section><div class="status" id="status"></div></main></div>
-<script src="/app.js"></script><script>
-let data;
-async function load(){data=await api("/api/admin/data");login.classList.add("hidden");panel.classList.remove("hidden");intro.value=data.settings.intro||"";day1.value=data.settings.day1||"";day2.value=data.settings.day2||"";render()}
-function render(){stages.innerHTML=data.stages.map(x=>`<div class="admin-entry"><b>${x.day}日目｜${esc(x.name)}</b><span>${esc(x.time)}｜${x.joinable?"参加可能":"参加不可能"}</span><button class="red" onclick="delStage(${x.id})">削除</button></div>`).join("");shops.innerHTML=data.shops.map(x=>`<div class="admin-entry"><b>#${esc(x.shop_no)}｜${esc(x.name)}</b><span>${esc(x.sells)}</span><button class="red" onclick="delShop(${x.id})">削除</button></div>`).join("")}
-loginBtn.onclick=async()=>{loginStatus.textContent="確認中...";try{await api("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password:pw.value})});await load()}catch(e){loginStatus.textContent=e.message}}
-logout.onclick=async e=>{e.preventDefault();await api("/api/logout",{method:"POST"});location.reload()}
-saveSettings.onclick=async()=>{try{await api("/api/admin/settings",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({intro:intro.value,day1:day1.value,day2:day2.value})});status.textContent="保存しました"}catch(e){status.textContent=e.message}}
-addStage.onclick=async()=>{try{await api("/api/admin/stages",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({day:+sday.value,name:sname.value,time:stime.value,joinable:sjoin.value==="1"})});sname.value=stime.value="";await load()}catch(e){status.textContent=e.message}}
-addShop.onclick=async()=>{try{await api("/api/admin/shops",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({shop_no:pno.value,name:pname.value,sells:psells.value})});pno.value=pname.value=psells.value="";await load()}catch(e){status.textContent=e.message}}
-async function delStage(id){if(!confirm("削除しますか？"))return;await api("/api/admin/stages/"+id,{method:"DELETE"});await load()}
-async function delShop(id){if(!confirm("削除しますか？"))return;await api("/api/admin/shops/"+id,{method:"DELETE"});await load()}
-document.querySelectorAll("[data-kind]").forEach(el=>el.onchange=async()=>{const f=el.files[0];if(!f)return;imageStatus.textContent="アップロード中...";try{await api("/api/admin/image/"+el.dataset.kind,{method:"PUT",headers:{"content-type":f.type||"application/octet-stream"},body:f});imageStatus.textContent="画像を保存しました"}catch(e){imageStatus.textContent=e.message}});
-load().catch(()=>{});
-</script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>橘祭 管理画面</title>
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    /* ==============================
+       橘祭 管理画面専用
+    ============================== */
+
+    .admin-page {
+      background: #f7f7ef;
+      min-height: 100vh;
+    }
+
+    .admin-top {
+      background: #063f2d;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    .admin-top-inner {
+      width: min(900px, calc(100% - 32px));
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .admin-logo {
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .admin-top-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .admin-top-actions a,
+    .admin-top-actions button {
+      padding: 10px 13px;
+      border-radius: 12px;
+      font-size: 13px;
+      background: rgba(255,255,255,.14);
+      color: white;
+    }
+
+    .admin-container {
+      width: min(900px, calc(100% - 28px));
+      margin: 30px auto 80px;
+    }
+
+    .admin-heading {
+      margin-bottom: 28px;
+    }
+
+    .admin-heading .kicker {
+      color: #18a94b;
+      font-size: 14px;
+    }
+
+    .admin-heading h1 {
+      font-family: inherit;
+      letter-spacing: 0;
+      line-height: 1.15;
+      font-size: clamp(32px, 8vw, 48px);
+      margin: 7px 0 10px;
+    }
+
+    .admin-heading p {
+      color: #687970;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .admin-section {
+      margin
