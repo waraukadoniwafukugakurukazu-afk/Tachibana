@@ -105,3 +105,64 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
   outline: none !important;
   border-radius: 10px;
 }
+/* ===== SHOP MAP 最終調整 ===== */
+
+/* マップ周辺に残っているアップロード枠を無効化 */
+.shop-map-wrap,
+.map-wrap,
+#shopMap,
+.shop-map,
+.map-image {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* マップを囲む部分 */
+.shop-map-wrap,
+.map-wrap {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+/* 実際の画像 */
+#shopMap,
+.shop-map,
+.map-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  border-radius: 14px !important;
+}
+
+/* SHOPの白いカード内を少しコンパクトに */
+.shop-page .card,
+.shop-page .panel {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* スマホ */
+@media (max-width: 760px) {
+  .shop-map-wrap,
+  .map-wrap {
+    padding: 0 !important;
+  }
+
+  #shopMap,
+  .shop-map,
+  .map-image {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+  }
+}
