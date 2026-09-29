@@ -270,3 +270,46 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
     height: auto !important;
   }
 }
+/* ===== 全ページの画像を自動サイズにする ===== */
+
+.image-slot,
+.map-wrap,
+.shop-map-wrap,
+.stage-map-wrap,
+.schedule-wrap,
+.image-wrap {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.image-slot img,
+.map-wrap img,
+.shop-map-wrap img,
+.stage-map-wrap img,
+.schedule-wrap img,
+.image-wrap img,
+.map-image,
+#shopMap img,
+#campusMap img,
+#locationMap img,
+#stageMap img,
+#stageSchedule img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 14px !important;
+}
