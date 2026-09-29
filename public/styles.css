@@ -313,3 +313,33 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
   box-shadow: none !important;
   border-radius: 14px !important;
 }
+/* ===== 縦長画像を途中で切らない ===== */
+
+.shop-page .card,
+.shop-page .panel {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+#shopMap,
+.shop-map,
+.shop-map-wrap,
+.map-wrap {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+#shopMap img,
+.shop-map img,
+.shop-map-wrap img,
+.map-wrap img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+}
