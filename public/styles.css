@@ -166,3 +166,107 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
     border-radius: 10px !important;
   }
 }
+/* ========================================
+   全ページ画像表示 共通設定
+   HOME / STAGE / SHOP
+======================================== */
+
+/* 画像を囲んでいる枠 */
+.map-wrap,
+.shop-map-wrap,
+.stage-map-wrap,
+.schedule-wrap,
+.image-wrap,
+.upload-wrap {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  overflow: hidden !important;
+  border-radius: 14px !important;
+}
+
+/* HOME・STAGE・SHOPの画像 */
+.map-wrap img,
+.shop-map-wrap img,
+.stage-map-wrap img,
+.schedule-wrap img,
+.image-wrap img,
+.upload-wrap img,
+.map-image,
+#shopMap,
+#campusMap,
+#locationMap,
+#stageMap,
+#stageSchedule {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  min-height: 0 !important;
+  max-height: none !important;
+  max-width: 100% !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  border-radius: 14px !important;
+}
+
+/* アップロード用に付いている点線も消す */
+.upload,
+.upload-box,
+.upload-area,
+.image-upload,
+.drop-zone {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* スマホ */
+@media (max-width: 760px) {
+  .map-wrap,
+  .shop-map-wrap,
+  .stage-map-wrap,
+  .schedule-wrap,
+  .image-wrap,
+  .upload-wrap {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .map-wrap img,
+  .shop-map-wrap img,
+  .stage-map-wrap img,
+  .schedule-wrap img,
+  .image-wrap img,
+  .upload-wrap img,
+  .map-image,
+  #shopMap,
+  #campusMap,
+  #locationMap,
+  #stageMap,
+  #stageSchedule {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
