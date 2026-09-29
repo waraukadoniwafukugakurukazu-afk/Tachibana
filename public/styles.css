@@ -343,3 +343,39 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
   max-height: none !important;
   object-fit: contain !important;
 }
+/* ===== 画像切れを完全に解除 ===== */
+
+.image-slot,
+.map-wrap,
+.shop-map-wrap,
+.stage-map-wrap,
+.schedule-wrap,
+.image-wrap,
+#shopMap,
+#campusMap,
+#locationMap,
+#stageMap,
+#stageSchedule {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.image-slot img,
+.map-wrap img,
+.shop-map-wrap img,
+.stage-map-wrap img,
+.schedule-wrap img,
+.image-wrap img,
+#shopMap img,
+#campusMap img,
+#locationMap img,
+#stageMap img,
+#stageSchedule img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+}
