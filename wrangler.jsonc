@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "tachibana-festival",
+  "name": "tachibana",
   "main": "src/index.js",
   "compatibility_date": "2026-09-29",
   "assets": {
@@ -19,7 +19,8 @@
   ],
   "r2_buckets": [
     {
-      "binding": "IMAGES"
+      "binding": "IMAGES",
+      "bucket_name": "tachibana-images"
     }
   ]
 }
