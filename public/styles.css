@@ -79,3 +79,29 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
     padding: 15px 18px;
   }
 }
+
+/* ===== SHOP MAP 枠を画像に自動追従 ===== */
+
+.shop-map-wrap,
+.map-wrap {
+  width: 100%;
+  height: auto !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+#shopMap,
+.shop-map,
+.map-image {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain;
+  border: none !important;
+  outline: none !important;
+  border-radius: 10px;
+}
