@@ -79,4 +79,836 @@
     }
 
     .admin-section {
-      margin
+      margin: 20px 0;
+      padding: 22px;
+      background: #fff;
+      border: 1px solid #dbe8df;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(6,63,45,.07);
+    }
+
+    .admin-section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .admin-number {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e7f8dc;
+      color: #08613d;
+      font-weight: 900;
+    }
+
+    .admin-section-title h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .admin-help {
+      color: #687970;
+      font-size: 14px;
+      margin: -8px 0 20px;
+      line-height: 1.6;
+    }
+
+    .admin-field {
+      margin: 16px 0;
+    }
+
+    .admin-field label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 900;
+      font-size: 15px;
+    }
+
+    .admin-field input,
+    .admin-field textarea,
+    .admin-field select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccd9d0;
+      border-radius: 12px;
+      background: #fff;
+      font: inherit;
+      font-size: 16px;
+    }
+
+    .admin-field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .admin-date-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .admin-save {
+      width: 100%;
+      margin-top: 10px;
+      padding: 15px;
+      background: #08613d;
+      color: #fff;
+      border: 0;
+      border-radius: 13px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .image-admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .image-admin-card {
+      border: 1px solid #dbe8df;
+      border-radius: 17px;
+      padding: 16px;
+      background: #fbfcf8;
+    }
+
+    .image-admin-card h3 {
+      font-size: 17px;
+      margin: 0 0 5px;
+    }
+
+    .image-admin-card p {
+      margin: 0 0 13px;
+      color: #687970;
+      font-size: 13px;
+    }
+
+    .image-admin-card input[type="file"] {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .image-status {
+      margin-top: 8px;
+      min-height: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #18a94b;
+    }
+
+    .add-box {
+      background: #f3faee;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .add-box h3 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .add-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .add-grid input,
+    .add-grid select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd9d0;
+      border-radius: 11px;
+      background: white;
+      font-size: 16px;
+    }
+
+    .add-button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 14px;
+      background: #18a94b;
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 15px;
+    }
+
+    .admin-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .admin-entry {
+      background: #fff;
+      border: 1px solid #dbe8df;
+      border-radius: 15px;
+      padding: 15px;
+    }
+
+    .admin-entry b {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .admin-entry span {
+      color: #687970;
+      font-size: 14px;
+    }
+
+    .admin-entry button {
+      margin-top: 10px;
+      padding: 9px 12px;
+      background: #c33b3b;
+      color: white;
+      border-radius: 10px;
+      border: 0;
+      font-weight: 800;
+    }
+
+    .login-screen {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: #f7f7ef;
+    }
+
+    .login-box {
+      width: min(400px, 100%);
+      background: white;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(6,63,45,.12);
+    }
+
+    .login-mark {
+      color: #18a94b;
+      font-weight: 900;
+      letter-spacing: .1em;
+      font-size: 13px;
+    }
+
+    .login-box h1 {
+      font-family: inherit;
+      letter-spacing: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 8px 0 22px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccd9d0;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+    }
+
+    #loginStatus {
+      margin-top: 10px;
+      min-height: 20px;
+      color: #c33b3b;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 700px) {
+      .admin-container {
+        width: calc(100% - 24px);
+        margin-top: 22px;
+      }
+
+      .admin-section {
+        padding: 18px;
+      }
+
+      .image-admin-grid,
+      .admin-date-grid,
+      .add-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-top-inner {
+        width: calc(100% - 24px);
+      }
+
+      .admin-top-actions a,
+      .admin-top-actions button {
+        padding: 9px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body class="admin-page">
+
+  <!-- ログイン -->
+  <div id="login" class="login-screen">
+    <div class="login-box">
+      <div class="login-mark">TACHIBANA FESTIVAL</div>
+      <h1>橘祭 管理画面</h1>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="管理パスワード"
+      >
+
+      <button id="loginBtn">ログイン</button>
+
+      <div id="loginStatus"></div>
+    </div>
+  </div>
+
+
+  <!-- 管理画面本体 -->
+  <div id="panel" class="hidden">
+
+    <header class="admin-top">
+      <div class="admin-top-inner">
+
+        <div class="admin-logo">
+          橘祭 管理
+        </div>
+
+        <div class="admin-top-actions">
+          <a href="/" target="_blank">サイトを見る</a>
+          <button id="logout">ログアウト</button>
+        </div>
+
+      </div>
+    </header>
+
+
+    <main class="admin-container">
+
+      <div class="admin-heading">
+        <div class="kicker">ADMIN</div>
+        <h1>管理画面</h1>
+        <p>
+          橘祭公式サイトの内容をここから変更できます。
+          保存した内容は公開サイトに反映されます。
+        </p>
+      </div>
+
+
+      <!-- 1 基本情報 -->
+      <section class="admin-section">
+
+        <div class="admin-section-title">
+          <div class="admin-number">1</div>
+          <h2>基本情報</h2>
+        </div>
+
+        <p class="admin-help">
+          トップページの紹介文と開催日を変更できます。
+        </p>
+
+        <div class="admin-field">
+          <label for="intro">学祭紹介</label>
+          <textarea
+            id="intro"
+            placeholder="橘祭の紹介文を入力"
+          ></textarea>
+        </div>
+
+        <div class="admin-date-grid">
+
+          <div class="admin-field">
+            <label for="day1">1日目の日付</label>
+            <input
+              id="day1"
+              placeholder="例：11月1日（土）"
+            >
+          </div>
+
+          <div class="admin-field">
+            <label for="day2">2日目の日付</label>
+            <input
+              id="day2"
+              placeholder="例：11月2日（日）"
+            >
+          </div>
+
+        </div>
+
+        <button id="saveSettings" class="admin-save">
+          基本情報を保存
+        </button>
+
+      </section>
+
+
+      <!-- 2 画像 -->
+      <section class="admin-section">
+
+        <div class="admin-section-title">
+          <div class="admin-number">2</div>
+          <h2>画像管理</h2>
+        </div>
+
+        <p class="admin-help">
+          地図やステージ予定表を変更できます。
+          画像を選択するとアップロードされます。
+        </p>
+
+        <div class="image-admin-grid">
+
+          <div class="image-admin-card">
+            <h3>📍 大学所在地マップ</h3>
+            <p>HOMEページに表示</p>
+            <input
+              type="file"
+              accept="image/*"
+              data-kind="location_map"
+            >
+            <div class="image-status"></div>
+          </div>
+
+
+          <div class="image-admin-card">
+            <h3>🗺️ 学内マップ</h3>
+            <p>HOMEページに表示</p>
+            <input
+              type="file"
+              accept="image/*"
+              data-kind="campus_map"
+            >
+            <div class="image-status"></div>
+          </div>
+
+
+          <div class="image-admin-card">
+            <h3>🎤 全体ステージ予定</h3>
+            <p>STAGEページに表示</p>
+            <input
+              type="file"
+              accept="image/*"
+              data-kind="stage_schedule"
+            >
+            <div class="image-status"></div>
+          </div>
+
+
+          <div class="image-admin-card">
+            <h3>🍴 学内出店マップ</h3>
+            <p>SHOPページに表示</p>
+            <input
+              type="file"
+              accept="image/*"
+              data-kind="shop_map"
+            >
+            <div class="image-status"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- 3 ステージ -->
+      <section class="admin-section">
+
+        <div class="admin-section-title">
+          <div class="admin-number">3</div>
+          <h2>ステージ管理</h2>
+        </div>
+
+        <p class="admin-help">
+          ステージ企画を追加・削除できます。
+        </p>
+
+        <div class="add-box">
+
+          <h3>＋ 新しいステージを追加</h3>
+
+          <div class="add-grid">
+
+            <select id="sday">
+              <option value="1">1日目</option>
+              <option value="2">2日目</option>
+            </select>
+
+            <input
+              id="sname"
+              placeholder="ステージ名"
+            >
+
+            <input
+              id="stime"
+              placeholder="時間 例：13:00〜13:30"
+            >
+
+            <select id="savail">
+              <option value="1">参加可能</option>
+              <option value="0">参加不可</option>
+            </select>
+
+          </div>
+
+          <button id="addStage" class="add-button">
+            ステージを追加
+          </button>
+
+        </div>
+
+        <div id="stages" class="admin-list"></div>
+
+      </section>
+
+
+      <!-- 4 出店 -->
+      <section class="admin-section">
+
+        <div class="admin-section-title">
+          <div class="admin-number">4</div>
+          <h2>出店管理</h2>
+        </div>
+
+        <p class="admin-help">
+          模擬店・キッチンカーなどの情報を管理できます。
+        </p>
+
+        <div class="add-box">
+
+          <h3>＋ 新しい出店を追加</h3>
+
+          <div class="add-grid">
+
+            <input
+              id="shopno"
+              placeholder="出店番号"
+            >
+
+            <input
+              id="shopname"
+              placeholder="店名"
+            >
+
+            <input
+              id="shopsells"
+              placeholder="販売内容"
+            >
+
+          </div>
+
+          <button id="addShop" class="add-button">
+            出店を追加
+          </button>
+
+        </div>
+
+        <div id="shops" class="admin-list"></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script src="/app.js"></script>
+
+  <script>
+    let data;
+
+
+    async function load() {
+
+      data = await api("/api/admin/data");
+
+      login.classList.add("hidden");
+      panel.classList.remove("hidden");
+
+      intro.value = data.settings.intro || "";
+      day1.value = data.settings.day1 || "";
+      day2.value = data.settings.day2 || "";
+
+      render();
+    }
+
+
+    function render() {
+
+      stages.innerHTML = data.stages.length
+        ? data.stages.map(x => `
+          <div class="admin-entry">
+
+            <b>
+              ${esc(x.day)}日目｜${esc(x.name)}
+            </b>
+
+            <span>
+              ${esc(x.time)}
+              ・
+              ${x.available ? "参加可能" : "参加不可"}
+            </span>
+
+            <button onclick="delStage(${x.id})">
+              削除
+            </button>
+
+          </div>
+        `).join("")
+        : `<p class="admin-help">ステージはまだ登録されていません。</p>`;
+
+
+      shops.innerHTML = data.shops.length
+        ? data.shops.map(x => `
+          <div class="admin-entry">
+
+            <b>
+              ${esc(x.number)}｜${esc(x.name)}
+            </b>
+
+            <span>
+              ${esc(x.sells)}
+            </span>
+
+            <button onclick="delShop(${x.id})">
+              削除
+            </button>
+
+          </div>
+        `).join("")
+        : `<p class="admin-help">出店情報はまだ登録されていません。</p>`;
+    }
+
+
+    loginBtn.onclick = async () => {
+
+      loginStatus.textContent = "確認中…";
+
+      try {
+
+        await api("/api/login", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({
+            password: password.value
+          })
+        });
+
+        loginStatus.textContent = "";
+
+        await load();
+
+      } catch (e) {
+
+        loginStatus.textContent =
+          "パスワードが違うか、ログインに失敗しました。";
+      }
+    };
+
+
+    password.addEventListener("keydown", e => {
+
+      if (e.key === "Enter") {
+        loginBtn.click();
+      }
+
+    });
+
+
+    logout.onclick = async () => {
+
+      await api("/api/logout", {
+        method: "POST"
+      });
+
+      location.reload();
+    };
+
+
+    saveSettings.onclick = async () => {
+
+      const old = saveSettings.textContent;
+
+      saveSettings.disabled = true;
+      saveSettings.textContent = "保存中…";
+
+      try {
+
+        await api("/api/admin/settings", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({
+            intro: intro.value,
+            day1: day1.value,
+            day2: day2.value
+          })
+        });
+
+        saveSettings.textContent = "✓ 保存しました";
+
+        setTimeout(() => {
+          saveSettings.textContent = old;
+          saveSettings.disabled = false;
+        }, 1500);
+
+      } catch (e) {
+
+        saveSettings.textContent = "保存に失敗しました";
+
+        setTimeout(() => {
+          saveSettings.textContent = old;
+          saveSettings.disabled = false;
+        }, 1800);
+      }
+    };
+
+
+    addStage.onclick = async () => {
+
+      if (!sname.value.trim()) {
+        alert("ステージ名を入力してください");
+        return;
+      }
+
+      await api("/api/admin/stages", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          day: Number(sday.value),
+          name: sname.value,
+          time: stime.value,
+          available: Number(savail.value)
+        })
+      });
+
+      sname.value = "";
+      stime.value = "";
+
+      await load();
+    };
+
+
+    addShop.onclick = async () => {
+
+      if (!shopname.value.trim()) {
+        alert("店名を入力してください");
+        return;
+      }
+
+      await api("/api/admin/shops", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          number: shopno.value,
+          name: shopname.value,
+          sells: shopsells.value
+        })
+      });
+
+      shopno.value = "";
+      shopname.value = "";
+      shopsells.value = "";
+
+      await load();
+    };
+
+
+    async function delStage(id) {
+
+      if (!confirm("このステージを削除しますか？")) {
+        return;
+      }
+
+      await api("/api/admin/stages/" + id, {
+        method: "DELETE"
+      });
+
+      await load();
+    }
+
+
+    async function delShop(id) {
+
+      if (!confirm("この出店を削除しますか？")) {
+        return;
+      }
+
+      await api("/api/admin/shops/" + id, {
+        method: "DELETE"
+      });
+
+      await load();
+    }
+
+
+    document
+      .querySelectorAll("[data-kind]")
+      .forEach(input => {
+
+        input.onchange = async () => {
+
+          const file = input.files[0];
+
+          if (!file) return;
+
+          const card = input.closest(".image-admin-card");
+          const status = card.querySelector(".image-status");
+
+          status.textContent = "アップロード中…";
+          input.disabled = true;
+
+          try {
+
+            const form = new FormData();
+
+            form.append("file", file);
+            form.append("kind", input.dataset.kind);
+
+            await api("/api/admin/image", {
+              method: "POST",
+              body: form
+            });
+
+            status.textContent = "✓ 変更しました";
+
+          } catch (e) {
+
+            status.textContent = "アップロードに失敗しました";
+
+          } finally {
+
+            input.disabled = false;
+            input.value = "";
+          }
+        };
+      });
+
+
+    load().catch(() => {});
+  </script>
+
+</body>
+</html>
