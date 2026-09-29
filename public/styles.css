@@ -379,3 +379,75 @@ button,.button{border:0;border-radius:13px;padding:13px 17px;background:var(--in
   max-height: none !important;
   object-fit: contain !important;
 }
+/* ===== SHOPページ 最終レイアウト調整 ===== */
+
+/* マップの白いカード */
+.shop-page .card:has(#shopMap) {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  padding-bottom: 28px !important;
+}
+
+/* マップを入れる場所 */
+#shopMap {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* マップ画像 */
+#shopMap img {
+  position: static !important;
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  max-width: 100% !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+
+/* 検索欄 */
+.shop-page .searchbar {
+  position: relative !important;
+  top: auto !important;
+  z-index: 5;
+
+  margin-top: 24px !important;
+  margin-bottom: 36px !important;
+}
+
+/* スマホ */
+@media (max-width: 760px) {
+
+  .shop-page .card:has(#shopMap) {
+    padding: 24px !important;
+  }
+
+  #shopMap {
+    width: 100% !important;
+  }
+
+  #shopMap img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .shop-page .searchbar {
+    margin: 22px 20px 32px !important;
+  }
+}
