@@ -882,15 +882,13 @@
 
           try {
 
-            const form = new FormData();
-
-            form.append("file", file);
-            form.append("kind", input.dataset.kind);
-
-            await api("/api/admin/image", {
-              method: "POST",
-              body: form
-            });
+            await api("/api/admin/image/" + encodeURIComponent(input.dataset.kind), {
+    method: "PUT",
+    headers: {
+        "content-type": file.type
+    },
+    body: file
+});
 
             status.textContent = "✓ 変更しました";
 
