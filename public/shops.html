@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>出店情報｜橘祭</title>
   <link rel="stylesheet" href="/styles.css">
+
+<style>
+.shop-item {
+  display: block;
+  background: #ffffff;
+  border: 2px solid #dbe8df;
+  border-radius: 22px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 8px 24px rgba(6, 63, 45, 0.08);
+}
+
+.shop-item .kicker {
+  color: #9edb38;
+  font-weight: 900;
+  font-size: 17px;
+}
+
+.shop-item h3 {
+  color: #063f2d;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.shop-item p {
+  color: #315127;
+  font-size: 17px;
+  margin: 8px 0 0;
+}
+</style>
+
+</head>
 </head>
 
 <body class="shop-page">
@@ -70,7 +102,7 @@
   list.innerHTML = d.shops.length
     ? d.shops.map(s => `
         <article class="card shop-item">
-          <div class="kicker">出店番号 ${esc(s.number)}</div>
+      <div class="kicker">出店番号 ${esc(s.shop_no)}</div>
           <h3>${esc(s.name)}</h3>
           <p>${esc(s.sells)}</p>
         </article>
