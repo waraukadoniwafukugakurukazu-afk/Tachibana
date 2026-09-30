@@ -269,3 +269,43 @@ h1 {
     font-size: 22px;
   }
 }
+/* ========================================
+   出店情報 1店舗ごとのカード
+======================================== */
+
+.shop-item {
+  background: #ffffff;
+  border: 2px solid #dbe8df;
+  border-radius: 22px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 24px rgba(6, 63, 45, 0.08);
+}
+
+.shop-item .kicker {
+  color: #8be31f;
+  font-weight: 900;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.shop-item h3 {
+  color: #063f2d;
+  font-size: 24px;
+  margin: 6px 0 12px;
+}
+
+.shop-item p {
+  color: #315127;
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .shop-item {
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+}
