@@ -76,8 +76,31 @@ async function admin(req,url,env){
   }
   return json({error:"Not found"},404);
 }
-async function media(url,env){
-  const key=decodeURIComponent(url.pathname.slice("/media/".length)); if(!key)return new Response("Not found",{status:404});
-  const obj=await env.IMAGES.get(key); if(!obj)return new Response("Not found",{status:404});
-  const h=new Headers(); obj.writeHttpMetadata(h); h.set("etag",obj.httpEtag); h.set("cache-control","public, max-age=3600"); return new Response(obj.body,{headers:h});
+async function media(url, env) {
+  const key = decodeURIComponent(url.pathname.slice("/media/".length));
+
+  if (!key) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  const obj = await env.IMAGES.get(key);
+
+  if (!obj) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  const headers = new Headers();
+
+  if (obj.httpMetadata?.contentType) {
+    headers.set("content-type", obj.httpMetadata.contentType);
+  }
+
+  headers.set("cache-control", "no-store, no-cache, must-revalidate");
+  headers.set("pragma", "no-cache");
+  headers.set("expires", "0");
+
+  return new Response(obj.body, {
+    status: 200,
+    headers
+  });
 }
