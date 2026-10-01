@@ -893,10 +893,9 @@ shop_no: shopno.value,
             status.textContent = "✓ 変更しました";
 
           } catch (e) {
-
-            status.textContent = "アップロードに失敗しました";
-
-          } finally {
+  console.error("画像アップロードエラー:", e);
+  状態.textContent = "アップロード失敗：" + (e?.message || String(e));
+}
 
             input.disabled = false;
             input.value = "";
