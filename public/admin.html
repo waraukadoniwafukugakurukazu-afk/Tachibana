@@ -480,7 +480,7 @@
             <input
               type="file"
               accept="image/*"
-              data-kind="location_map"
+              data-kind="campus_map"
             >
             <div class="image-status"></div>
           </div>
@@ -644,6 +644,16 @@ const day1 = document.getElementById("day1");
 const day2 = document.getElementById("day2");
 const stages = document.getElementById("stages");
 const shops = document.getElementById("shops");
+const saveSettings = document.getElementById("saveSettings");
+const addStage = document.getElementById("addStage");
+const addShop = document.getElementById("addShop");
+const sday = document.getElementById("sday");
+const sname = document.getElementById("sname");
+const stime = document.getElementById("stime");
+const savail = document.getElementById("savail");
+const shopno = document.getElementById("shopno");
+const shopname = document.getElementById("shopname");
+const shopsells = document.getElementById("shopsells");
 
 
     async function load() {
@@ -674,7 +684,7 @@ const shops = document.getElementById("shops");
             <span>
               ${esc(x.time)}
               ・
-              ${x.available ? "参加可能" : "参加不可"}
+              ${x.joinable ? "参加可能" : "参加不可"}
             </span>
 
             <button onclick="delStage(${x.id})">
@@ -691,7 +701,7 @@ const shops = document.getElementById("shops");
           <div class="admin-entry">
 
             <b>
-              ${esc(x.number)}｜${esc(x.name)}
+              ${esc(x.shop_no)}｜${esc(x.name)}
             </b>
 
             <span>
@@ -731,7 +741,7 @@ const shops = document.getElementById("shops");
       } catch (e) {
 
         loginStatus.textContent =
-          "パスワードが違うか、ログインに失敗しました。";
+          e.message || "ログインに失敗しました。";
       }
     };
 
@@ -811,7 +821,7 @@ const shops = document.getElementById("shops");
           day: Number(sday.value),
           name: sname.value,
           time: stime.value,
-          available: Number(savail.value)
+          joinable: savail.value === "1"
         })
       });
 
@@ -907,12 +917,11 @@ shop_no: shopno.value,
 
           } catch (e) {
   console.error("画像アップロードエラー:", e);
-  状態.textContent = "アップロード失敗：" + (e?.message || String(e));
+  status.textContent = "アップロード失敗：" + (e?.message || String(e));
 }
 
             input.disabled = false;
             input.value = "";
-          }
         };
       });
 
@@ -922,3 +931,4 @@ shop_no: shopno.value,
 
 </body>
 </html>
+
