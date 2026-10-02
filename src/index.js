@@ -7,12 +7,12 @@ export default {
     const url=new URL(request.url);
     try{
       if(url.pathname==="/api/public" && request.method==="GET") return json(await publicData(env));
-      if(url.pathname==="/api/login" && request.method==="POST") return login(request,env);
+      if(url.pathname==="/api/login" && request.method==="POST") return await login(request,env);
       if(url.pathname==="/api/logout" && request.method==="POST") return new Response(null,{status:204,headers:{"Set-Cookie":`${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`}});
-      if(url.pathname.startsWith("/media/") && request.method==="GET") return media(url,env);
+      if(url.pathname.startsWith("/media/") && request.method==="GET") return await media(url,env);
       if(url.pathname.startsWith("/api/admin/")){
         if(!(await authed(request,env))) return json({error:"ログインが必要です"},401);
-        return admin(request,url,env);
+        return await admin(request,url,env);
       }
       return env.ASSETS.fetch(request);
     }catch(e){return json({error:e?.message||"サーバーエラー"},500)}
@@ -104,3 +104,4 @@ async function media(url, env) {
     headers
   });
 }
+
