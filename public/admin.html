@@ -193,6 +193,16 @@
       font-size: 14px;
     }
 
+    .image-preview {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #dbe8df;
+      border-radius: 12px;
+      margin: 12px 0;
+      background: #fbfaf2;
+    }
+
     .image-status {
       margin-top: 8px;
       min-height: 20px;
@@ -476,7 +486,7 @@
           <div class="image-admin-card">
             <h3>トップ画像（メインビジュアル）</h3>
             <p>HOMEの一番上に表示。10MB以下の画像を選択してください。</p>
-            <img id="heroPreview" src="/assets/hero-group.jpg" alt="現在のトップ画像" style="width:100%;height:auto;border-radius:12px;margin:12px 0">
+            <img id="heroPreview" class="image-preview" data-preview="hero_image" src="/assets/hero-group.jpg" alt="現在のトップ画像">
             <input type="file" accept="image/*" data-kind="hero_image" aria-label="トップ画像を変更">
             <div class="image-status" role="status"></div>
           </div>
@@ -484,11 +494,9 @@
           <div class="image-admin-card">
             <h3>📍 大学所在地マップ</h3>
             <p>HOMEページに表示</p>
-            <input
-              type="file"
-              accept="image/*"
-              data-kind="campus_map"
-            >
+            <img class="image-preview hidden" data-preview="campus_map" alt="現在の大学所在地マップ">
+            <p data-preview-empty="campus_map">画像はまだ登録されていません。</p>
+            <input type="file" accept="image/*" data-kind="campus_map" aria-label="大学所在地マップを変更">
             <div class="image-status"></div>
           </div>
 
@@ -496,11 +504,9 @@
           <div class="image-admin-card">
             <h3>🗺️ 学内マップ</h3>
             <p>HOMEページに表示</p>
-            <input
-  type="file"
-  accept="image/*"
-  data-kind="inside_map"
->
+            <img class="image-preview hidden" data-preview="inside_map" alt="現在の学内マップ">
+            <p data-preview-empty="inside_map">画像はまだ登録されていません。</p>
+            <input type="file" accept="image/*" data-kind="inside_map" aria-label="学内マップを変更">
             <div class="image-status"></div>
           </div>
 
@@ -508,11 +514,9 @@
           <div class="image-admin-card">
             <h3>🎤 全体ステージ予定</h3>
             <p>STAGEページに表示</p>
-            <input
-              type="file"
-              accept="image/*"
-              data-kind="stage_schedule"
-            >
+            <img class="image-preview hidden" data-preview="stage_schedule" alt="現在の全体ステージ予定">
+            <p data-preview-empty="stage_schedule">画像はまだ登録されていません。</p>
+            <input type="file" accept="image/*" data-kind="stage_schedule" aria-label="全体ステージ予定を変更">
             <div class="image-status"></div>
           </div>
 
@@ -520,11 +524,9 @@
           <div class="image-admin-card">
             <h3>🍴 学内出店マップ</h3>
             <p>SHOPページに表示</p>
-            <input
-              type="file"
-              accept="image/*"
-              data-kind="shop_map"
-            >
+            <img class="image-preview hidden" data-preview="shop_map" alt="現在の学内出店マップ">
+            <p data-preview-empty="shop_map">画像はまだ登録されていません。</p>
+            <input type="file" accept="image/*" data-kind="shop_map" aria-label="学内出店マップを変更">
             <div class="image-status"></div>
           </div>
 
@@ -663,6 +665,16 @@ const shopname = document.getElementById("shopname");
 const shopsells = document.getElementById("shopsells");
 
 
+    function updateImagePreview(kind, key) {
+      const img = document.querySelector('[data-preview="' + kind + '"]');
+      const empty = document.querySelector('[data-preview-empty="' + kind + '"]');
+      const src = key ? "/media/" + encodeURIComponent(key) : (kind === "hero_image" ? "/assets/hero-group.jpg" : "");
+      img.classList.toggle("hidden", !src);
+      if (src) img.src = src;
+      else img.removeAttribute("src");
+      if (empty) empty.classList.toggle("hidden", !!src);
+    }
+
     async function load() {
 
       data = await api("/api/admin/data");
@@ -674,7 +686,7 @@ const shopsells = document.getElementById("shopsells");
       day1.value = data.settings.day1 || "";
       day2.value = data.settings.day2 || "";
 
-      document.getElementById("heroPreview").src = data.settings.hero_image ? "/media/" + encodeURIComponent(data.settings.hero_image) : "/assets/hero-group.jpg";
+      document.querySelectorAll("[data-preview]").forEach(img => updateImagePreview(img.dataset.preview, data.settings[img.dataset.preview]));
       render();
     }
 
@@ -921,9 +933,8 @@ shop_no: shopno.value,
     body: file
 });
 
-            if (input.dataset.kind === "hero_image") {
-              document.getElementById("heroPreview").src = "/media/" + encodeURIComponent(uploaded.key);
-            }
+            data.settings[input.dataset.kind] = uploaded.key;
+            updateImagePreview(input.dataset.kind, uploaded.key);
             status.textContent = "✓ 変更しました";
 
           } catch (e) {
