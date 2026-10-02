@@ -284,6 +284,10 @@
       font-weight: 800;
     }
 
+    .entry-actions { display:flex; flex-wrap:wrap; gap:8px; }
+    .admin-entry .move-button { background:#08613d; min-height:44px; }
+    .admin-entry button:disabled { opacity:.4; cursor:default; }
+    .order-status { color:#08613d; min-height:24px; font-size:14px; margin:10px 0; }
     .login-screen {
       min-height: 100vh;
       display: grid;
@@ -544,7 +548,7 @@
         </div>
 
         <p class="admin-help">
-          ステージ企画を追加・削除できます。
+          ステージ企画を追加・削除できます。「↑ 上へ」「↓ 下へ」で日付ごとに並べ替え、自動保存します。
         </p>
 
         <div class="add-box">
@@ -581,7 +585,7 @@
 
         </div>
 
-        <div id="stages" class="admin-list"></div>
+        <p id="stagesOrderStatus" class="order-status" role="status"></p><div id="stages" class="admin-list"></div>
 
       </section>
 
@@ -595,7 +599,7 @@
         </div>
 
         <p class="admin-help">
-          模擬店・キッチンカーなどの情報を管理できます。
+          「↑ 上へ」「↓ 下へ」で出店の表示順を変更できます。順番は自動保存されます。
         </p>
 
         <div class="add-box">
@@ -627,7 +631,7 @@
 
         </div>
 
-        <div id="shops" class="admin-list"></div>
+        <p id="shopsOrderStatus" class="order-status" role="status"></p><div id="shops" class="admin-list"></div>
 
       </section>
 
@@ -691,6 +695,46 @@ const shopsells = document.getElementById("shopsells");
     }
 
 
+
+    let ordering = false;
+    function orderButtons(kind, item) {
+      const list = kind === "stages" ? data.stages.filter(x => x.day === item.day) : data.shops;
+      const index = list.findIndex(x => x.id === item.id);
+      return '<div class="entry-actions">' +
+        '<button class="move-button" onclick="moveEntry(\'' + kind + '\',' + item.id + ',-1)" ' + (index === 0 ? 'disabled' : '') + '>↑ 上へ</button>' +
+        '<button class="move-button" onclick="moveEntry(\'' + kind + '\',' + item.id + ',1)" ' + (index === list.length - 1 ? 'disabled' : '') + '>↓ 下へ</button></div>';
+    }
+    async function moveEntry(kind, id, direction) {
+      if (ordering) return;
+      const item = data[kind].find(x => x.id === id);
+      const list = kind === "stages" ? data.stages.filter(x => x.day === item.day) : [...data.shops];
+      const index = list.findIndex(x => x.id === id);
+      const target = index + direction;
+      if (index < 0 || target < 0 || target >= list.length) return;
+      [list[index], list[target]] = [list[target], list[index]];
+      ordering = true;
+      const status = document.getElementById(kind + "OrderStatus");
+      status.textContent = "順番を保存中…";
+      document.querySelectorAll("#stages button, #shops button, #addStage, #addShop").forEach(b => b.disabled = true);
+      try {
+        await api("/api/admin/" + kind + "/reorder", {
+          method:"PUT", headers:{"content-type":"application/json"},
+          body:JSON.stringify({ids:list.map(x => x.id), ...(kind === "stages" ? {day:item.day} : {})})
+        });
+        const updated = await api("/api/admin/data");
+        data.stages = updated.stages;
+        data.shops = updated.shops;
+        status.textContent = "✓ 順番を保存しました";
+      } catch (e) {
+        status.textContent = "保存できませんでした：" + e.message;
+      } finally {
+        ordering = false;
+        render();
+        addStage.disabled = false;
+        addShop.disabled = false;
+      }
+    }
+
     function render() {
 
       stages.innerHTML = data.stages.length
@@ -707,6 +751,7 @@ const shopsells = document.getElementById("shopsells");
               ${x.joinable ? "参加可能" : "参加不可"}
             </span>
 
+            ${orderButtons("stages", x)}
             <button onclick="delStage(${x.id})">
               削除
             </button>
@@ -728,6 +773,7 @@ const shopsells = document.getElementById("shopsells");
               ${esc(x.sells)}
             </span>
 
+            ${orderButtons("shops", x)}
             <button onclick="delShop(${x.id})">
               削除
             </button>
