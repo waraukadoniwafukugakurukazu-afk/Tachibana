@@ -1,6 +1,6 @@
 
 const COOKIE="tachibana_session";
-const allowedImageKinds=new Set(["campus_map","inside_map","stage_schedule","shop_map"]);
+const allowedImageKinds=new Set(["hero_image","campus_map","inside_map","stage_schedule","shop_map"]);
 
 export default {
   async fetch(request, env) {
@@ -38,7 +38,7 @@ async function ensure(env){
     env.DB.prepare("CREATE TABLE IF NOT EXISTS stages (id INTEGER PRIMARY KEY AUTOINCREMENT, day INTEGER NOT NULL, name TEXT NOT NULL, time TEXT NOT NULL DEFAULT '', joinable INTEGER NOT NULL DEFAULT 1, sort_order INTEGER NOT NULL DEFAULT 0)"),
     env.DB.prepare("CREATE TABLE IF NOT EXISTS shops (id INTEGER PRIMARY KEY AUTOINCREMENT, shop_no TEXT NOT NULL DEFAULT '', name TEXT NOT NULL, sells TEXT NOT NULL DEFAULT '', sort_order INTEGER NOT NULL DEFAULT 0)")
   ]);
-  const defaults={intro:"九州国際大学の大学祭「橘祭」。学生と地域がつながり、ステージ・出店・企画を楽しめる2日間です。",day1:"1日目",day2:"2日目",campus_map:"",inside_map:"",stage_schedule:"",shop_map:""};
+  const defaults={intro:"九州国際大学の大学祭「橘祭」。学生と地域がつながり、ステージ・出店・企画を楽しめる2日間です。",day1:"1日目",day2:"2日目",hero_image:"",campus_map:"",inside_map:"",stage_schedule:"",shop_map:""};
   for(const [k,v] of Object.entries(defaults)) await env.DB.prepare("INSERT OR IGNORE INTO settings(key,value) VALUES(?,?)").bind(k,v).run();
 }
 async function publicData(env){
