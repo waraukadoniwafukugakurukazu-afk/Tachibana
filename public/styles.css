@@ -577,3 +577,77 @@ h1 {
     border-radius: 20px;
   }
 }
+
+/* Festival introduction */
+.festival-about { padding: 44px 0 12px; }
+.about-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(26px, 5vw, 60px);
+  border: 1px solid rgba(8, 97, 61, .2);
+  border-radius: 26px;
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: 0 14px 36px rgba(6, 63, 45, .12);
+}
+.about-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -150px;
+  right: -95px;
+  border: 26px solid rgba(139, 227, 31, .18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.about-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  margin: 0 0 24px;
+  color: var(--lime2);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.about-label span { color: #dbe8df; letter-spacing: .04em; }
+.about-headline {
+  margin: 0 0 24px;
+  font-family: inherit;
+  font-size: clamp(30px, 6vw, 62px);
+  font-weight: 900;
+  line-height: 1.5;
+  letter-spacing: .01em;
+}
+.about-headline span {
+  color: var(--lime2);
+  text-decoration: underline;
+  text-decoration-color: rgba(212, 246, 63, .32);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 9px;
+}
+.about-description {
+  max-width: 48em;
+  margin: 0;
+  color: #f4f7ef;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 2;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.about-tags span {
+  padding: 7px 12px;
+  border: 1px solid rgba(212, 246, 63, .32);
+  border-radius: 999px;
+  color: #e9f5df;
+  font-size: 12px;
+  font-weight: 700;
+}
+@media (max-width: 700px) {
+  .festival-about { padding-top: 28px; }
+  .about-card { padding: 26px 20px; border-radius: 22px; }
+  .about-headline { font-size: clamp(28px, 8vw, 42px); }
+}
