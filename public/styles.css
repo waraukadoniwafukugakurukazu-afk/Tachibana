@@ -466,3 +466,114 @@ h1 {
     font-size: 22px;
   }
 }
+
+/* Image frames: paper, fine green edges and a soft shadow */
+.grid2 {
+  gap: 28px;
+}
+
+.card:has(> .image-slot),
+.shop-map-card {
+  min-width: 0;
+  padding: clamp(14px, 2.5vw, 26px);
+  border: 1px solid rgba(8, 97, 61, .22);
+  border-radius: 24px;
+  background: #fffef9;
+  box-shadow: 0 8px 26px rgba(6, 63, 45, .06);
+}
+
+.card:has(> .image-slot) > h3,
+.shop-map-card > h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: clamp(19px, 2.5vw, 24px);
+  line-height: 1.5;
+}
+
+.card:has(> .image-slot) > h3::before,
+.shop-map-card > h3::before {
+  content: "";
+  flex: 0 0 4px;
+  height: 1em;
+  border-radius: 4px;
+  background: var(--deep);
+}
+
+.image-slot,
+.shop-map-wrap {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 5px;
+  border: 1px solid rgba(8, 97, 61, .13);
+  border-radius: 15px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.image-slot img,
+.shop-map-wrap img {
+  display: block;
+  position: static;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.image-slot:empty,
+.shop-map-wrap:empty {
+  display: none;
+}
+
+.image-slot > span,
+.shop-map-wrap > span {
+  display: block;
+  padding: 24px 12px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.shop-map-card,
+.card:has(> #schedule) {
+  margin-bottom: 26px;
+}
+
+/* Frame the main visual without changing its text overlay */
+.hero {
+  width: min(1120px, calc(100% - 30px));
+  margin: 20px auto 0;
+  border: 1px solid rgba(8, 97, 61, .22);
+  border-radius: 24px;
+  box-shadow: 0 8px 26px rgba(6, 63, 45, .09);
+}
+
+@media (max-width: 700px) {
+  .grid2 {
+    gap: 22px;
+  }
+
+  .card:has(> .image-slot),
+  .shop-map-card {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .card:has(> .image-slot) > h3,
+  .shop-map-card > h3 {
+    margin-bottom: 14px;
+  }
+
+  .hero {
+    margin-top: 14px;
+    border-radius: 20px;
+  }
+}
