@@ -51,17 +51,35 @@ async function publicData(env){
 async function admin(req,url,env){
   await ensure(env);
   if(url.pathname==="/api/admin/data" && req.method==="GET") return json(await publicData(env));
+  if ((url.pathname === "/api/admin/stages/reorder" || url.pathname === "/api/admin/shops/reorder") && req.method === "PUT") {
+    const table = url.pathname.includes("/stages/") ? "stages" : "shops";
+    const body = await req.json();
+    const ids = body.ids;
+    if (!Array.isArray(ids) || !ids.every(id => Number.isSafeInteger(id) && id > 0) || new Set(ids).size !== ids.length)
+      return json({error:"並び順が不正です"},400);
+    if (table === "stages" && ![1,2].includes(body.day)) return json({error:"日付が不正です"},400);
+    const rows = table === "stages"
+      ? (await env.DB.prepare("SELECT id FROM stages WHERE day=? ORDER BY sort_order,id").bind(body.day).all()).results
+      : (await env.DB.prepare("SELECT id FROM shops ORDER BY sort_order,id").all()).results;
+    const existing = new Set(rows.map(row => row.id));
+    if (ids.length !== rows.length || ids.some(id => !existing.has(id)))
+      return json({error:"一覧が更新されています。再読み込みしてやり直してください"},409);
+    if (ids.length) await env.DB.batch(ids.map((id,index) =>
+      env.DB.prepare("UPDATE " + table + " SET sort_order=? WHERE id=?").bind(index,id)
+    ));
+    return json({ok:true});
+  }
   if(url.pathname==="/api/admin/settings" && req.method==="PUT"){
     const b=await req.json(); for(const k of ["intro","day1","day2"]) if(k in b) await env.DB.prepare("INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").bind(k,String(b[k]??"")).run(); return json({ok:true});
   }
   if(url.pathname==="/api/admin/stages" && req.method==="POST"){
     const b=await req.json(); if(!b.name?.trim())return json({error:"ステージ名を入力してください"},400);
-    await env.DB.prepare("INSERT INTO stages(day,name,time,joinable) VALUES(?,?,?,?)").bind(Number(b.day)===2?2:1,b.name.trim(),String(b.time||""),b.joinable?1:0).run(); return json({ok:true});
+    await env.DB.prepare("INSERT INTO stages(day,name,time,joinable,sort_order) VALUES(?,?,?,?,(SELECT COALESCE(MAX(sort_order),-1)+1 FROM stages))").bind(Number(b.day)===2?2:1,b.name.trim(),String(b.time||""),b.joinable?1:0).run(); return json({ok:true});
   }
   if(url.pathname.startsWith("/api/admin/stages/") && req.method==="DELETE"){await env.DB.prepare("DELETE FROM stages WHERE id=?").bind(Number(url.pathname.split("/").pop())).run();return json({ok:true})}
   if(url.pathname==="/api/admin/shops" && req.method==="POST"){
     const b=await req.json(); if(!b.name?.trim())return json({error:"店名を入力してください"},400);
-    await env.DB.prepare("INSERT INTO shops(shop_no,name,sells) VALUES(?,?,?)").bind(String(b.shop_no||""),b.name.trim(),String(b.sells||"")).run();return json({ok:true});
+    await env.DB.prepare("INSERT INTO shops(shop_no,name,sells,sort_order) VALUES(?,?,?,(SELECT COALESCE(MAX(sort_order),-1)+1 FROM shops))").bind(String(b.shop_no||""),b.name.trim(),String(b.sells||"")).run();return json({ok:true});
   }
   if(url.pathname.startsWith("/api/admin/shops/") && req.method==="DELETE"){await env.DB.prepare("DELETE FROM shops WHERE id=?").bind(Number(url.pathname.split("/").pop())).run();return json({ok:true})}
   if(url.pathname.startsWith("/api/admin/image/") && req.method==="PUT"){
