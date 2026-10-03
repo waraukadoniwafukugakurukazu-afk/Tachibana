@@ -38,7 +38,7 @@
 
 </head>
 
-<body class="shop-page">
+<body class="festival-guide shop-guide shop-page">
 
 <header class="header">
   <div class="shell nav">
@@ -47,7 +47,7 @@
     <nav class="navlinks">
       <a href="/"><span>HOME</span></a>
       <a href="/stage.html"><span>STAGE</span></a>
-      <a href="/shops.html"><span>SHOP</span></a>
+      <a href="/shops.html" aria-current="page"><span>SHOP</span></a>
     </nav>
   </div>
 </header>
@@ -55,8 +55,11 @@
 <main class="section">
   <div class="shell">
 
-    <div class="kicker" style="color:var(--green)">SHOP</div>
-    <h1 class="title">出店情報</h1>
+    <div class="guide-heading">
+      <span class="guide-word" aria-hidden="true">SHOP!</span>
+      <h1 class="title">出店情報</h1>
+      <p class="guide-caption">おいしい出会いを、探しにいこう。</p>
+    </div>
 
     <!-- 学内出店マップ -->
     <div class="card shop-map-card">
@@ -69,6 +72,7 @@
     <div class="searchbar">
       <input
         id="q"
+        aria-label="出店番号・店名・販売内容で検索"
         type="search"
         placeholder="出店番号・店名・販売内容で検索"
       >
