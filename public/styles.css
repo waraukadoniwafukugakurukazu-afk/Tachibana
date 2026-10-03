@@ -645,160 +645,175 @@ h1 {
   .about-description { margin: 0; }
 }
 
-/* HOME poster edition: one palette, deliberately unexpected shapes. */
-.festival-poster main { overflow: clip; }
-.festival-poster .header { border-bottom: 2px solid var(--ink); }
-.festival-poster .brand { transform: rotate(-6deg); }
-.festival-poster .hero {
-  min-height: 680px;
-  min-height: min(820px, 88svh);
-  border: 3px solid var(--ink);
-  border-radius: 0 90px 0 0;
-  box-shadow: 8px 8px 0 var(--lime2);
-  margin-top: 28px;
+/* Green light identity: original translucent ribbons, photographic space. */
+:is(.festival-poster,.festival-guide) {
+  --paper: #f3f6e9;
+  --ink: #103c2b;
+  --deep: #21593b;
+  --lime2: #d5f578;
+  --line: #d3dfc5;
+  background: radial-gradient(ellipse at 100% 0, #dceabd 0, transparent 48rem),var(--paper);
 }
-.festival-poster .hero > img { opacity: .9; }
+:is(.festival-poster,.festival-guide) .header {
+  background: rgba(243,246,233,.94); border-bottom: 1px solid rgba(16,60,43,.14);
+}
+:is(.festival-poster,.festival-guide) .brand { transform: none; }
+:is(.festival-poster,.festival-guide) .navlinks a {
+  font-size: 12px; font-weight: 800; letter-spacing: .05em;
+}
+.festival-poster main { overflow: clip; }
+.festival-poster .hero {
+  isolation: isolate; min-height: 650px; min-height: min(800px,85svh);
+  margin-top: 22px; border: 1px solid rgba(16,60,43,.25);
+  border-radius: 28px 28px 100px 28px; box-shadow: 0 24px 60px rgba(16,60,43,.12);
+}
+.festival-poster .hero > img { opacity: 1; }
 .festival-poster .hero::after {
-  background: linear-gradient(180deg, rgba(6,63,45,.03) 15%, rgba(6,63,45,.3) 42%, rgba(6,63,45,.96) 100%);
+  background: linear-gradient(90deg,rgba(8,38,26,.82),rgba(8,38,26,.07) 90%),
+    linear-gradient(0deg,rgba(8,38,26,.8),transparent 65%);
 }
 .festival-poster .brush {
-  top: 9%; right: -3%; width: 46%; height: 12%;
-  transform: rotate(-15deg); background: var(--lime2);
-  clip-path: polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);
+  z-index: 1; inset: -12% -26% auto auto; width: 88%; height: 105%;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%20800%22%20fill%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%20x1%3D%22100%22%20y1%3D%22700%22%20x2%3D%22920%22%20y2%3D%2280%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23dfff7d%22%20stop-opacity%3D%22.03%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23c8f957%22%20stop-opacity%3D%22.52%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6ffdd%22%20stop-opacity%3D%22.9%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cellipse%20cx%3D%22570%22%20cy%3D%22430%22%20rx%3D%22530%22%20ry%3D%22160%22%20transform%3D%22rotate(-34%20570%20430)%22%20stroke%3D%22url(%23a)%22%20stroke-width%3D%22100%22%2F%3E%3Cellipse%20cx%3D%22600%22%20cy%3D%22380%22%20rx%3D%22540%22%20ry%3D%22185%22%20transform%3D%22rotate(-34%20600%20380)%22%20stroke%3D%22%23eaffbc%22%20stroke-opacity%3D%22.55%22%20stroke-width%3D%222%22%2F%3E%3Cellipse%20cx%3D%22710%22%20cy%3D%22300%22%20rx%3D%22200%22%20ry%3D%22390%22%20transform%3D%22rotate(32%20710%20300)%22%20stroke%3D%22url(%23a)%22%20stroke-width%3D%2240%22%2F%3E%3Ccircle%20cx%3D%22810%22%20cy%3D%22130%22%20r%3D%2280%22%20fill%3D%22url(%23a)%22%20stroke%3D%22%23faffed%22%20stroke-opacity%3D%22.35%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22660%22%20r%3D%2238%22%20fill%3D%22url(%23a)%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  clip-path: none; transform: none; opacity: .8; pointer-events: none;
 }
-.festival-poster .hero-copy { width: calc(100% - 48px); padding: 160px 0 40px; }
-.festival-poster .hero h1 {
-  font-size: clamp(112px, 23vw, 260px); letter-spacing: -.09em;
-  line-height: 1.05; margin: 14px 0 20px;
-  transform: rotate(-6deg); transform-origin: left center;
-  text-shadow: 5px 5px 0 var(--deep);
-}
+.festival-poster .hero-copy { width: calc(100% - 88px); padding: 150px 0 56px; }
 .festival-poster .hero .kicker {
-  display: inline-block; max-width: 90%; padding: 8px 12px;
-  background: var(--lime2); color: var(--ink);
-  font-size: clamp(10px, 1.5vw, 15px); transform: rotate(-3deg);
+  max-width: 34em; font-size: 11px; line-height: 1.8; font-weight: 700;
+  letter-spacing: .17em; color: #e5fac3;
 }
-.festival-poster .hero p { max-width: 32em; line-height: 1.8; margin-bottom: 0; }
+.festival-poster .hero h1 {
+  font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+  font-size: clamp(108px,19vw,220px); line-height: 1.12;
+  font-weight: 900; letter-spacing: -.07em; margin: 14px 0 26px;
+  transform: rotate(-4deg); transform-origin: left center;
+  text-shadow: 0 4px 24px rgba(0,0,0,.16);
+}
+.festival-poster .hero p { font-size: clamp(15px,2vw,20px); line-height: 1.9; max-width: 30em; font-weight: 600; }
 .hero-sticker {
-  position: absolute; z-index: 3; right: 24px; top: 32px;
-  display: grid; place-content: center; width: 130px; height: 130px;
-  background: var(--paper); color: var(--ink); border: 3px solid var(--ink);
-  border-radius: 50%; transform: rotate(12deg);
-  font-size: 23px; font-weight: 900; text-align: center; line-height: 1.4;
-  box-shadow: 5px 5px 0 var(--green);
+  position: absolute; z-index: 3; top: 28px; right: 28px;
+  display: grid; place-content: center; width: 106px; height: 106px;
+  border: 1px solid rgba(247,255,219,.75); border-radius: 50%;
+  background: rgba(236,255,198,.88); color: var(--ink);
+  box-shadow: inset 0 0 25px rgba(255,255,255,.65);
+  font-family: serif; font-size: 19px; font-weight: 800; text-align: center; line-height: 1.5;
+  transform: rotate(9deg);
 }
 .festival-tape {
-  display: flex; align-items: center; height: 64px; margin-top: 36px;
-  background: var(--lime2); border-block: 2px solid var(--ink);
-  transform: rotate(-2deg) scale(1.02); overflow: hidden;
+  width: min(1120px,calc(100% - 30px)); margin: 30px auto 0;
+  padding: 15px 0; overflow: hidden; border-block: 1px solid #c7d6b4;
 }
 .festival-tape span {
-  flex-shrink: 0; white-space: nowrap; font-size: clamp(25px,4vw,42px);
-  font-weight: 950; letter-spacing: .06em; color: var(--ink);
+  display: block; white-space: nowrap; color: var(--deep); font-size: 13px;
+  font-weight: 700; letter-spacing: .27em;
 }
-.festival-poster .festival-about { padding: 80px 0 30px; }
+.festival-poster .festival-about { position: relative; padding: 80px 0 36px; }
+.festival-poster .festival-about::before {
+  content: ""; position: absolute; z-index: 0; inset: 0 0 auto auto;
+  width: 340px; height: 340px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%,#faffed,rgba(205,230,149,.4) 48%,transparent 70%);
+  pointer-events: none;
+}
 .festival-poster .about-card {
-  position: relative; padding: 0 8px 48px; border-bottom: 3px solid var(--ink);
-  grid-template-columns: 1.2fr 1fr; column-gap: 40px;
+  position: relative; grid-template-columns: 1.15fr 1fr; column-gap: 48px;
+  padding: 0 8px 52px; border-bottom: 1px solid var(--line);
 }
-.festival-poster .about-label {
-  width: fit-content; padding: 8px 14px; border: 2px solid var(--ink);
-  background: var(--paper); box-shadow: 4px 4px 0 var(--lime2);
-  transform: rotate(-3deg); color: var(--ink);
-}
-.festival-poster .about-label::before { display: none; }
+.festival-poster .about-label { color: var(--deep); font-size: 11px; letter-spacing: .13em; }
+.festival-poster .about-label::before { background: var(--deep); height: 1px; width: 32px; }
 .festival-poster .about-headline {
-  font-family: inherit; font-size: clamp(32px,4.6vw,58px);
-  font-weight: 950; letter-spacing: -.055em; line-height: 1.65;
+  font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+  font-size: clamp(32px,4.8vw,58px); line-height: 1.7; letter-spacing: -.04em;
 }
 .festival-poster .about-headline span {
-  display: inline-block; padding: 0 10px; margin-top: 10px;
-  background: var(--ink); color: var(--lime2); transform: rotate(-4deg);
-  box-shadow: 5px 5px 0 var(--green);
+  display: inline-block; margin-top: 8px; padding: 0 12px;
+  background: linear-gradient(120deg,#d7ef9d,#eaf6c9);
+  border-radius: 6px 28px 6px 28px; transform: rotate(-3deg);
 }
-.festival-poster .about-description { padding-top: 8px; }
-.festival-poster .about-tags { gap: 10px; }
+.festival-poster .about-description { line-height: 2.15; font-size: 16px; }
+.festival-poster .about-tags { gap: 8px; }
 .festival-poster .about-tags span {
-  border: 1px solid var(--ink); border-radius: 50%; padding: 9px 12px;
-  transform: rotate(4deg);
+  padding: 7px 12px; border: 1px solid #b8c99d; border-radius: 30px; font-weight: 500;
 }
-.festival-poster .about-tags span:nth-child(2) { background: var(--lime2); transform: rotate(-8deg); }
 .festival-poster .about-tags span::before { display: none; }
-.festival-poster .grid2 { gap: 44px; padding: 18px 8px; }
+.festival-poster .grid2 { gap: 34px; }
 .festival-poster .grid2 > .card {
-  position: relative; border: 2px solid var(--ink); border-radius: 0;
-  background: var(--white); box-shadow: 7px 7px 0 var(--ink);
-  padding: clamp(16px, 3vw, 30px);
+  padding: clamp(16px,2.5vw,28px); background: rgba(255,255,248,.8);
+  border: 1px solid #cbd9ba; border-radius: 20px; box-shadow: 0 14px 30px rgba(25,64,35,.045);
 }
-.festival-poster .grid2 > .card::after {
-  content: ""; position: absolute; width: 86px; height: 22px;
-  left: 24px; top: -12px; transform: rotate(-7deg);
-  background: var(--lime2); border-inline: 2px dashed var(--ink);
-}
-.festival-poster .grid2 > .card:nth-child(2) { border-radius: 32px 0 32px 0; box-shadow: 7px 7px 0 var(--green); }
-.festival-poster .grid2 > .card > h3 { margin-top: 10px; }
-.festival-poster .image-slot { border: 0; padding: 0; border-radius: 0; }
-.festival-poster .image-slot img { border-radius: 0; }
-.festival-poster .cta-grid { gap: 32px; padding: 12px 8px; }
+.festival-poster .grid2 > .card:nth-child(2) { border-radius: 40px 10px 40px 10px; }
+.festival-poster .grid2 > .card > h3 { font-size: 22px; }
+.festival-poster .image-slot { padding: 0; border: 1px solid var(--line); border-radius: 10px; }
+.festival-poster .image-slot img { border-radius: 9px; }
+.festival-poster .cta-grid { gap: 24px; }
 .festival-poster .cta-grid > .cta {
-  position: relative; border: 3px solid var(--ink); border-radius: 0;
-  box-shadow: 7px 7px 0 var(--green); padding: 26px 22px;
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: 34px 28px; border: 1px solid #376947; border-radius: 24px 24px 60px 24px;
+  background: linear-gradient(130deg,#103c2b,#285f36); color: #f7ffea;
+  box-shadow: 0 16px 30px rgba(16,60,43,.1);
 }
-.festival-poster .cta-grid > .cta[href="/shops.html"] {
-  border-color: var(--ink); border-radius: 44px 0 44px 0; box-shadow: 7px 7px 0 var(--ink);
+.festival-poster .cta-grid > .cta::before {
+  content: ""; position: absolute; z-index: -1; inset: -25% -35% -30% 10%;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%20800%22%20fill%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%20x1%3D%22100%22%20y1%3D%22700%22%20x2%3D%22920%22%20y2%3D%2280%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23dfff7d%22%20stop-opacity%3D%22.03%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23c8f957%22%20stop-opacity%3D%22.52%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6ffdd%22%20stop-opacity%3D%22.9%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cellipse%20cx%3D%22570%22%20cy%3D%22430%22%20rx%3D%22530%22%20ry%3D%22160%22%20transform%3D%22rotate(-34%20570%20430)%22%20stroke%3D%22url(%23a)%22%20stroke-width%3D%22100%22%2F%3E%3Cellipse%20cx%3D%22600%22%20cy%3D%22380%22%20rx%3D%22540%22%20ry%3D%22185%22%20transform%3D%22rotate(-34%20600%20380)%22%20stroke%3D%22%23eaffbc%22%20stroke-opacity%3D%22.55%22%20stroke-width%3D%222%22%2F%3E%3Cellipse%20cx%3D%22710%22%20cy%3D%22300%22%20rx%3D%22200%22%20ry%3D%22390%22%20transform%3D%22rotate(32%20710%20300)%22%20stroke%3D%22url(%23a)%22%20stroke-width%3D%2240%22%2F%3E%3Ccircle%20cx%3D%22810%22%20cy%3D%22130%22%20r%3D%2280%22%20fill%3D%22url(%23a)%22%20stroke%3D%22%23faffed%22%20stroke-opacity%3D%22.35%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22660%22%20r%3D%2238%22%20fill%3D%22url(%23a)%22%2F%3E%3C%2Fsvg%3E") center / cover no-repeat; opacity: .28; pointer-events: none;
 }
 .festival-poster .cta-word {
-  grid-column: 1 / -1; display: block; color: var(--lime2);
-  font-size: clamp(48px, 7vw, 80px); font-weight: 950; line-height: 1;
-  letter-spacing: -.06em; transform: rotate(-5deg); transform-origin: left center;
-  margin: 4px 0 12px;
+  grid-column: 1 / -1; display: block; margin: 0 0 20px;
+  font-family: Georgia,serif; font-size: clamp(46px,6vw,76px);
+  font-weight: 400; font-style: italic; line-height: 1; letter-spacing: -.04em; color: #e4fab5;
+}
+.festival-poster .cta-grid > .cta h3 { font-size: 23px; }
+.festival-poster .cta-grid > .cta p { font-size: 14px; line-height: 1.8; }
+.festival-poster .cta-grid > .cta .arrow {
+  grid-row: 2 / 4; background: rgba(235,255,193,.12); border: 1px solid currentColor; color: inherit;
+}
+.festival-poster .cta-grid > .cta[href="/shops.html"] {
+  background: linear-gradient(130deg,#e9f6c9,#c6e877); color: var(--ink); border-color: #b3cf83;
+  border-radius: 60px 24px 24px 24px;
 }
 .festival-poster .cta[href="/shops.html"] .cta-word { color: var(--ink); }
-.festival-poster .cta-grid > .cta .arrow { grid-row: 2 / 4; border-radius: 0; transform: rotate(-8deg); }
-.festival-poster .footer {
-  padding: 32px 0; border-top: 3px solid var(--ink);
-  background: var(--lime2); color: var(--ink);
+.festival-poster .cta-grid > .cta:hover { filter: brightness(1.06); }
+:is(.festival-poster,.festival-guide) .footer {
+  padding: 40px 0; border-top: 1px solid #315d3a; background: #153c2b; color: #edf6df; line-height: 1.9;
 }
-.festival-poster .footer b { font-family: serif; font-size: 40px; }
-@media (min-width: 850px) {
+:is(.festival-poster,.festival-guide) .footer .brand { color: #edf6df; }
+.festival-poster .footer b { font-family: serif; font-size: 34px; }
+@media (min-width:850px) {
   .festival-poster .grid2 { grid-template-columns: 1fr 1fr; align-items: start; }
-  .festival-poster .grid2 > .card:nth-child(2) { margin-top: 60px; }
-  .festival-poster .cta-grid > .cta:nth-child(2) { margin-top: 28px; }
+  .festival-poster .grid2 > .card:nth-child(2) { margin-top: 50px; }
 }
-@media (max-width: 700px) {
-  .festival-poster .navlinks { gap: 0; }
-  .festival-poster .navlinks a { padding: 10px 8px; font-size: 12px; }
-  .festival-poster .hero { min-height: 600px; min-height: max(560px, 78svh); border-radius: 0 64px 0 0; }
-  .festival-poster .hero-copy { width: calc(100% - 32px); padding-bottom: 30px; }
-  .hero-sticker { width: 96px; height: 96px; font-size: 18px; top: 24px; right: 16px; }
-  .festival-poster .hero h1 { font-size: clamp(100px, 32vw, 180px); }
-  .festival-poster .hero .kicker { font-size: 10px; letter-spacing: .06em; }
+@media (max-width:700px) {
+  :is(.festival-poster,.festival-guide) .navlinks { gap: 0; }
+  :is(.festival-poster,.festival-guide) .navlinks a { padding: 10px 8px; font-size: 11px; }
+  .festival-poster .hero { min-height: 580px; min-height: max(530px,78svh); border-radius: 20px 20px 56px 20px; margin-top: 14px; }
+  .festival-poster .hero-copy { width: calc(100% - 40px); padding: 180px 0 30px; }
+  .festival-poster .hero h1 { font-size: clamp(100px,32vw,170px); }
+  .festival-poster .hero .kicker { font-size: 10px; letter-spacing: .1em; }
+  .festival-poster .brush { width: 145%; height: 100%; right: -66%; top: -10%; opacity: .62; }
+  .hero-sticker { width: 86px; height: 86px; top: 20px; right: 20px; font-size: 16px; }
   .festival-poster .festival-about { padding-top: 56px; }
   .festival-poster .about-card { grid-template-columns: 1fr; }
-  .festival-poster .about-headline { font-size: clamp(28px, 8.5vw, 48px); margin-bottom: 26px; }
-  .festival-poster .about-description { padding-top: 0; }
-  .festival-poster .about-label { font-size: 10px; gap: 8px; }
+  .festival-poster .about-headline { font-size: clamp(28px,8.5vw,44px); margin-bottom: 28px; }
+  .festival-poster .about-label { font-size: 10px; }
+  .festival-poster .cta-grid > .cta { padding: 30px 24px; }
 }
-
-/* STAGE / SHOP: companion festival posters, with readable lists. */
-.festival-guide .header { border-bottom: 2px solid var(--ink); }
-.festival-guide .brand { transform: rotate(-6deg); }
+/* STAGE / SHOP: green-light companion pages. */
+.festival-guide .header { border-bottom: 1px solid var(--line); }
+.festival-guide .brand { transform: none; }
 .festival-guide main.section { padding: 32px 0 64px; }
 .festival-guide main > .shell { padding-inline: 7px; }
 .guide-heading {
   position: relative; isolation: isolate; margin: 0 0 40px;
   padding: clamp(24px,4vw,48px) 20px 30px;
-  border: 3px solid var(--ink); box-shadow: 7px 7px 0 var(--green);
-  background: var(--ink); color: var(--paper); border-radius: 0 54px 0 0;
+  border: 1px solid #426b3a; box-shadow: 0 20px 45px rgba(16,60,43,.09);
+  background: linear-gradient(125deg,#103c2b,#35633c); color: #f5ffe8; border-radius: 24px 24px 70px 24px; overflow: hidden;
 }
 .guide-heading::after {
-  content: "✳"; position: absolute; z-index: -1; right: 12px; top: 8px;
-  font-size: clamp(90px,16vw,180px); line-height: 1; color: rgba(212,246,63,.18);
+  content: ""; position: absolute; z-index: -1; inset: -50% -20% -60% 20%;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%20800%22%20fill%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%20x1%3D%22100%22%20y1%3D%22700%22%20x2%3D%22920%22%20y2%3D%2280%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23dfff7d%22%20stop-opacity%3D%22.03%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23c8f957%22%20stop-opacity%3D%22.52%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6ffdd%22%20stop-opacity%3D%22.9%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cellipse%20cx%3D%22570%22%20cy%3D%22430%22%20rx%3D%22530%22%20ry%3D%22160%22%20transform%3D%22rotate(-34%20570%20430)%22%20stroke%3D%22url(%23a)%22%20stroke-width%3D%22100%22%2F%3E%3Cellipse%20cx%3D%22600%22%20cy%3D%22380%22%20rx%3D%22540%22%20ry%3D%22185%22%20transform%3D%22rotate(-34%20600%20380)%22%20stroke%3D%22%23eaffbc%22%20stroke-opacity%3D%22.55%22%20stroke-width%3D%222%22%2F%3E%3Cellipse%20cx%3D%22710%22%20cy%3D%22300%22%20rx%3D%22200%22%20ry%3D%22390%22%20transform%3D%22rotate(32%20710%20300)%22%20stroke%3D%22url(%23a)%22%20stroke-width%3D%2240%22%2F%3E%3Ccircle%20cx%3D%22810%22%20cy%3D%22130%22%20r%3D%2280%22%20fill%3D%22url(%23a)%22%20stroke%3D%22%23faffed%22%20stroke-opacity%3D%22.35%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22660%22%20r%3D%2238%22%20fill%3D%22url(%23a)%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat; opacity: .48; pointer-events: none;
 }
 .guide-heading .guide-word {
-  display: block; width: fit-content; font-size: clamp(64px,14vw,150px);
-  font-weight: 950; letter-spacing: -.075em; line-height: 1;
-  color: var(--lime2); transform: rotate(-5deg); transform-origin: left center;
+  display: block; width: fit-content; font-size: clamp(64px,12vw,132px);
+  font-family: Georgia,serif; font-style: italic; font-weight: 400; letter-spacing: -.065em; line-height: 1;
+  color: var(--lime2); transform: rotate(-3deg); transform-origin: left center;
   margin: 8px 0 24px;
 }
 .guide-heading .title {
@@ -807,27 +822,20 @@ h1 {
 }
 .guide-heading .guide-caption { margin: 12px 0 0; font-size: 14px; line-height: 1.8; }
 .shop-guide .guide-heading {
-  color: var(--ink); background: var(--lime2); border-radius: 48px 0 48px 0;
-  box-shadow: 7px 7px 0 var(--ink);
+  color: var(--ink); background: linear-gradient(130deg,#eaf4d8,#c8e794); border-radius: 60px 24px 24px 24px;
+  box-shadow: 0 20px 45px rgba(16,60,43,.07); border-color: #bbd499;
 }
 .shop-guide .guide-word { color: var(--ink); }
 .shop-guide .guide-heading::after { color: rgba(6,63,45,.12); }
 .festival-guide .navlinks a[aria-current="page"] {
-  background: var(--lime2); color: var(--ink); border-radius: 2px; transform: rotate(-4deg);
+  background: #e3efcd; color: var(--ink); border-radius: 30px;
 }
 .festival-guide .card:has(> #schedule),
 .festival-guide .shop-map-card {
   position: relative; margin: 0 0 36px; padding: clamp(16px,3vw,28px);
-  border: 2px solid var(--ink); border-radius: 0;
-  background: var(--white); box-shadow: 6px 6px 0 var(--ink);
+  border: 1px solid var(--line); border-radius: 20px;
+  background: #fbfdf5; box-shadow: 0 12px 32px rgba(16,60,43,.045);
 }
-.festival-guide .card:has(> #schedule)::before,
-.festival-guide .shop-map-card::before {
-  content: ""; position: absolute; top: -12px; left: 24px;
-  width: 90px; height: 24px; background: var(--lime2);
-  border-inline: 2px dashed var(--ink); transform: rotate(-7deg);
-}
-.festival-guide .shop-map-card { border-radius: 0 0 30px 0; box-shadow: 6px 6px 0 var(--green); }
 .festival-guide .card:has(> #schedule) > h3,
 .festival-guide .shop-map-card > h3 { margin-top: 10px; font-size: clamp(18px,3vw,25px); }
 .festival-guide .image-slot,
@@ -836,16 +844,16 @@ h1 {
 .festival-guide .shop-map-wrap img { border-radius: 0; width: 100%; height: auto; object-fit: contain; }
 .festival-guide .searchbar {
   display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px;
-  padding: 16px; margin: 36px 0; border: 2px solid var(--ink);
-  background: var(--lime2); box-shadow: 4px 4px 0 var(--ink);
+  padding: 16px; margin: 36px 0; border: 1px solid #c3d4aa; border-radius: 18px;
+  background: linear-gradient(120deg,#e5efd2,#f1f7e6); box-shadow: none;
 }
 .festival-guide .searchbar input {
-  min-width: 0; width: 100%; padding: 12px; border: 2px solid var(--ink);
-  border-radius: 0; font: inherit; font-size: 16px; background: var(--white); color: var(--ink);
+  min-width: 0; width: 100%; padding: 12px; border: 1px solid #adbf99;
+  border-radius: 9px; font: inherit; font-size: 16px; background: var(--white); color: var(--ink);
 }
 .festival-guide .searchbar input::placeholder { color: #596b62; opacity: 1; }
 .festival-guide .searchbar button {
-  min-height: 48px; padding: 10px 18px; border: 2px solid var(--ink); border-radius: 0;
+  min-height: 48px; padding: 10px 18px; border: 1px solid var(--ink); border-radius: 9px;
   font: inherit; font-weight: 800; background: var(--ink); color: var(--white); cursor: pointer;
 }
 .festival-guide .searchbar button:hover { background: var(--deep); }
@@ -853,7 +861,7 @@ h1 {
 .festival-guide .day { margin-top: 42px; }
 .festival-guide .dayhead {
   display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
-  padding-bottom: 14px; border-bottom: 3px solid var(--ink);
+  padding-bottom: 14px; border-bottom: 1px solid #a8bb92;
 }
 .festival-guide .dayhead h2 {
   margin: 0; padding: 8px 16px; font-size: 28px; line-height: 1.3;
@@ -863,10 +871,10 @@ h1 {
 .festival-guide .daydate { margin: 0; font-weight: 700; color: var(--ink); }
 .festival-guide :is(.stage-item,.shop-item) {
   min-width: 0; margin: 22px 0; padding: 22px;
-  border: 2px solid var(--ink); border-radius: 0; background: var(--white);
-  box-shadow: 5px 5px 0 var(--ink); overflow-wrap: anywhere; scroll-margin-top: 90px;
+  border: 1px solid #c6d5b5; border-radius: 14px; background: #fbfdf5;
+  box-shadow: 0 10px 24px rgba(16,60,43,.04); overflow-wrap: anywhere; scroll-margin-top: 90px;
 }
-.festival-guide .stage-item { border-left: 10px solid var(--green); }
+.festival-guide .stage-item { border-left: 5px solid #5a8b46; }
 .festival-guide .stage-item:nth-of-type(even) { border-left-color: var(--lime2); }
 .festival-guide .stage-item h3,
 .festival-guide .shop-item h3 { font-size: clamp(20px,3vw,26px); line-height: 1.55; margin: 6px 0 14px; }
@@ -876,13 +884,13 @@ h1 {
   background: var(--paper); color: var(--ink); font-size: 14px;
 }
 .festival-guide .shop-item { border-radius: 26px 0 26px 0; }
-.festival-guide .shop-item:nth-child(even) { box-shadow: 5px 5px 0 var(--green); }
+.festival-guide .shop-item:nth-child(even) { background: #f0f6e6; }
 .festival-guide .shop-item .kicker {
   display: inline-block; max-width: 100%; padding: 6px 12px; margin: 0 0 12px;
   font-size: 14px; letter-spacing: .03em; color: var(--ink); background: var(--lime2);
-  border: 1px solid var(--ink); transform: rotate(-3deg);
+  border: 1px solid #b0c889; border-radius: 24px;
 }
-.festival-guide .footer { padding: 32px 0; background: var(--lime2); border-top: 3px solid var(--ink); }
+
 @media (min-width: 850px) {
   .shop-guide #list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .shop-guide #list .shop-item { margin: 0; }
