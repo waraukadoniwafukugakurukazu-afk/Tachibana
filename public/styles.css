@@ -779,3 +779,119 @@ h1 {
   .festival-poster .about-description { padding-top: 0; }
   .festival-poster .about-label { font-size: 10px; gap: 8px; }
 }
+
+/* STAGE / SHOP: companion festival posters, with readable lists. */
+.festival-guide .header { border-bottom: 2px solid var(--ink); }
+.festival-guide .brand { transform: rotate(-6deg); }
+.festival-guide main.section { padding: 32px 0 64px; }
+.festival-guide main > .shell { padding-inline: 7px; }
+.guide-heading {
+  position: relative; isolation: isolate; margin: 0 0 40px;
+  padding: clamp(24px,4vw,48px) 20px 30px;
+  border: 3px solid var(--ink); box-shadow: 7px 7px 0 var(--green);
+  background: var(--ink); color: var(--paper); border-radius: 0 54px 0 0;
+}
+.guide-heading::after {
+  content: "✳"; position: absolute; z-index: -1; right: 12px; top: 8px;
+  font-size: clamp(90px,16vw,180px); line-height: 1; color: rgba(212,246,63,.18);
+}
+.guide-heading .guide-word {
+  display: block; width: fit-content; font-size: clamp(64px,14vw,150px);
+  font-weight: 950; letter-spacing: -.075em; line-height: 1;
+  color: var(--lime2); transform: rotate(-5deg); transform-origin: left center;
+  margin: 8px 0 24px;
+}
+.guide-heading .title {
+  margin: 0; font-family: inherit; font-size: clamp(24px,4.5vw,44px);
+  line-height: 1.45; letter-spacing: -.04em; color: inherit;
+}
+.guide-heading .guide-caption { margin: 12px 0 0; font-size: 14px; line-height: 1.8; }
+.shop-guide .guide-heading {
+  color: var(--ink); background: var(--lime2); border-radius: 48px 0 48px 0;
+  box-shadow: 7px 7px 0 var(--ink);
+}
+.shop-guide .guide-word { color: var(--ink); }
+.shop-guide .guide-heading::after { color: rgba(6,63,45,.12); }
+.festival-guide .navlinks a[aria-current="page"] {
+  background: var(--lime2); color: var(--ink); border-radius: 2px; transform: rotate(-4deg);
+}
+.festival-guide .card:has(> #schedule),
+.festival-guide .shop-map-card {
+  position: relative; margin: 0 0 36px; padding: clamp(16px,3vw,28px);
+  border: 2px solid var(--ink); border-radius: 0;
+  background: var(--white); box-shadow: 6px 6px 0 var(--ink);
+}
+.festival-guide .card:has(> #schedule)::before,
+.festival-guide .shop-map-card::before {
+  content: ""; position: absolute; top: -12px; left: 24px;
+  width: 90px; height: 24px; background: var(--lime2);
+  border-inline: 2px dashed var(--ink); transform: rotate(-7deg);
+}
+.festival-guide .shop-map-card { border-radius: 0 0 30px 0; box-shadow: 6px 6px 0 var(--green); }
+.festival-guide .card:has(> #schedule) > h3,
+.festival-guide .shop-map-card > h3 { margin-top: 10px; font-size: clamp(18px,3vw,25px); }
+.festival-guide .image-slot,
+.festival-guide .shop-map-wrap { padding: 0; border: 1px solid var(--line); border-radius: 0; }
+.festival-guide .image-slot img,
+.festival-guide .shop-map-wrap img { border-radius: 0; width: 100%; height: auto; object-fit: contain; }
+.festival-guide .searchbar {
+  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px;
+  padding: 16px; margin: 36px 0; border: 2px solid var(--ink);
+  background: var(--lime2); box-shadow: 4px 4px 0 var(--ink);
+}
+.festival-guide .searchbar input {
+  min-width: 0; width: 100%; padding: 12px; border: 2px solid var(--ink);
+  border-radius: 0; font: inherit; font-size: 16px; background: var(--white); color: var(--ink);
+}
+.festival-guide .searchbar input::placeholder { color: #596b62; opacity: 1; }
+.festival-guide .searchbar button {
+  min-height: 48px; padding: 10px 18px; border: 2px solid var(--ink); border-radius: 0;
+  font: inherit; font-weight: 800; background: var(--ink); color: var(--white); cursor: pointer;
+}
+.festival-guide .searchbar button:hover { background: var(--deep); }
+.festival-guide :is(input,button,a):focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+.festival-guide .day { margin-top: 42px; }
+.festival-guide .dayhead {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  padding-bottom: 14px; border-bottom: 3px solid var(--ink);
+}
+.festival-guide .dayhead h2 {
+  margin: 0; padding: 8px 16px; font-size: 28px; line-height: 1.3;
+  color: var(--lime2); background: var(--ink); transform: rotate(-4deg);
+}
+.festival-guide .day:nth-child(2) .dayhead h2 { color: var(--ink); background: var(--lime2); transform: rotate(3deg); }
+.festival-guide .daydate { margin: 0; font-weight: 700; color: var(--ink); }
+.festival-guide :is(.stage-item,.shop-item) {
+  min-width: 0; margin: 22px 0; padding: 22px;
+  border: 2px solid var(--ink); border-radius: 0; background: var(--white);
+  box-shadow: 5px 5px 0 var(--ink); overflow-wrap: anywhere; scroll-margin-top: 90px;
+}
+.festival-guide .stage-item { border-left: 10px solid var(--green); }
+.festival-guide .stage-item:nth-of-type(even) { border-left-color: var(--lime2); }
+.festival-guide .stage-item h3,
+.festival-guide .shop-item h3 { font-size: clamp(20px,3vw,26px); line-height: 1.55; margin: 6px 0 14px; }
+.festival-guide .stage-time { border-top: 1px dashed var(--deep); padding-top: 14px; }
+.festival-guide .stage-status {
+  border: 1px solid var(--ink); border-radius: 2px; padding: 6px 12px;
+  background: var(--paper); color: var(--ink); font-size: 14px;
+}
+.festival-guide .shop-item { border-radius: 26px 0 26px 0; }
+.festival-guide .shop-item:nth-child(even) { box-shadow: 5px 5px 0 var(--green); }
+.festival-guide .shop-item .kicker {
+  display: inline-block; max-width: 100%; padding: 6px 12px; margin: 0 0 12px;
+  font-size: 14px; letter-spacing: .03em; color: var(--ink); background: var(--lime2);
+  border: 1px solid var(--ink); transform: rotate(-3deg);
+}
+.festival-guide .footer { padding: 32px 0; background: var(--lime2); border-top: 3px solid var(--ink); }
+@media (min-width: 850px) {
+  .shop-guide #list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .shop-guide #list .shop-item { margin: 0; }
+}
+@media (max-width: 600px) {
+  .festival-guide .navlinks { gap: 0; }
+  .festival-guide .navlinks a { padding: 10px 9px; font-size: 12px; }
+  .festival-guide .searchbar { padding: 10px; gap: 8px; }
+  .festival-guide .searchbar button { padding-inline: 12px; }
+  .festival-guide :is(.stage-item,.shop-item) { padding: 18px; }
+  .guide-heading { padding-inline: 18px; }
+}
