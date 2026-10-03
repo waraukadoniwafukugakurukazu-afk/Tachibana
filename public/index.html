@@ -1,6 +1,7 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>橘祭｜九州国際大学</title><link rel="stylesheet" href="/styles.css"></head><body>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>橘祭｜九州国際大学</title><link rel="stylesheet" href="/styles.css"></head><body class="festival-poster">
 <header class="header"><div class="shell nav"><a class="brand" href="/">橘祭</a><nav class="navlinks"><a href="/">HOME</a><a href="/stage.html">STAGE</a><a href="/shops.html">SHOP</a><a href="/admin.html">⚙</a></nav></div></header>
-<main><section class="hero"><img id="heroImage" src="/assets/hero-group.jpg" alt="橘祭メインビジュアル"><div class="brush"></div><div class="shell hero-copy"><div class="kicker">KYUSHU INTERNATIONAL UNIVERSITY FESTIVAL</div><h1>橘祭</h1><p>学生の熱量が、街とつながる。九州国際大学の大学祭。</p></div></section>
+<main><section class="hero"><img id="heroImage" src="/assets/hero-group.jpg" alt="橘祭メインビジュアル"><div class="brush" aria-hidden="true"></div><span class="hero-sticker" aria-hidden="true">街ごと、<br>わくわく。</span><div class="shell hero-copy"><div class="kicker">KYUSHU INTERNATIONAL UNIVERSITY FESTIVAL</div><h1>橘祭</h1><p>学生の熱量が、街とつながる。九州国際大学の大学祭。</p></div></section>
+<div class="festival-tape" aria-hidden="true"><span>TACHIBANA ✳ FESTIVAL ✳ TACHIBANA ✳ FESTIVAL ✳ TACHIBANA ✳ FESTIVAL</span></div>
 <section class="section festival-about" aria-labelledby="aboutTitle">
   <div class="shell">
     <div class="about-card">
@@ -12,7 +13,7 @@
   </div>
 </section>
 <section class="section"><div class="shell grid2"><div class="card"><h3>大学の所在地</h3><div class="image-slot" id="campus"></div></div><div class="card"><h3>学内マップ</h3><div class="image-slot" id="inside"></div></div></div></section>
-<section class="section"><div class="shell cta-grid"><a class="cta" href="/stage.html"><h3>ステージ情報</h3><p>2日間のステージ予定・参加情報を見る</p><span class="arrow">→</span></a><a class="cta" href="/shops.html"><h3>出店情報</h3><p>出店番号・店名・販売内容から探す</p><span class="arrow">→</span></a></div></section></main>
+<section class="section"><div class="shell cta-grid"><a class="cta" href="/stage.html"><span class="cta-word" aria-hidden="true">STAGE!</span><h3>ステージ情報</h3><p>2日間のステージ予定・参加情報を見る</p><span class="arrow">→</span></a><a class="cta" href="/shops.html"><span class="cta-word" aria-hidden="true">SHOP!</span><h3>出店情報</h3><p>出店番号・店名・販売内容から探す</p><span class="arrow">→</span></a></div></section></main>
 <footer class="footer"><div class="shell"><b>橘祭</b><br><small>九州国際大学 大学祭</small></div></footer><script src="/app.js"></script><script>
 (async()=>{const d=await api("/api/public");if(d.settings.hero_image)document.getElementById("heroImage").src="/media/"+encodeURIComponent(d.settings.hero_image);intro.textContent=d.settings.intro||"";campus.innerHTML=imageHTML(d.settings.campus_map,"大学所在地");inside.innerHTML=imageHTML(d.settings.inside_map,"学内マップ")})().catch(e=>intro.textContent=e.message);
 </script></body></html>
