@@ -75,7 +75,7 @@
   </style>
 </head>
 
-<body>
+<body class="festival-guide stage-guide">
 
 <header class="header">
   <div class="shell nav">
@@ -84,7 +84,7 @@
 
     <nav class="navlinks">
       <a href="/"><span>HOME</span></a>
-      <a href="/stage.html"><span>STAGE</span></a>
+      <a href="/stage.html" aria-current="page"><span>STAGE</span></a>
       <a href="/shops.html"><span>SHOP</span></a>
     </nav>
 
@@ -95,8 +95,11 @@
 <main class="section">
   <div class="shell">
 
-    <div class="kicker" style="color:var(--green)">STAGE</div>
-    <h1 class="title">ステージ情報</h1>
+    <div class="guide-heading">
+      <span class="guide-word" aria-hidden="true">STAGE!</span>
+      <h1 class="title">ステージ情報</h1>
+      <p class="guide-caption">音と熱気の、その真ん中へ。</p>
+    </div>
 
 
     <!-- 全体ステージ予定 -->
@@ -111,6 +114,7 @@
 
       <input
         id="q"
+        aria-label="ステージ名・時間などで検索"
         type="search"
         placeholder="ステージ名・時間などで検索"
       >
