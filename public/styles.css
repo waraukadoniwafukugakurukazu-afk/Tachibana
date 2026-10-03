@@ -405,12 +405,12 @@ h1 {
   gap: 12px 16px;
   min-width: 0;
   padding: 26px;
-  border: 2px solid var(--deep);
-  border-radius: 20px;
-  background: var(--white);
-  color: var(--ink);
-  box-shadow: 0 6px 18px rgba(6, 63, 45, .08);
-  transition: background .18s ease, box-shadow .18s ease;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: none;
+  transition: background .18s ease;
 }
 
 .cta-grid > .cta h3 {
@@ -424,7 +424,7 @@ h1 {
   margin: 0;
   font-size: 16px;
   line-height: 1.7;
-  color: var(--text);
+  color: inherit;
 }
 
 .cta-grid > .cta .arrow {
@@ -436,15 +436,15 @@ h1 {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--deep);
-  color: var(--white);
+  background: var(--lime2);
+  color: var(--ink);
   font-size: 24px;
 }
 
-.cta-grid > .cta:hover {
-  background: #f0f9e8;
-  box-shadow: 0 10px 24px rgba(6, 63, 45, .14);
-}
+.cta-grid > .cta:hover { background: var(--deep); }
+.cta-grid > .cta[href="/shops.html"] { background: var(--lime2); color: var(--ink); border-color: var(--lime2); }
+.cta-grid > .cta[href="/shops.html"] .arrow { background: var(--ink); color: var(--lime2); }
+.cta-grid > .cta[href="/shops.html"]:hover { background: #c3eb30; border-color: #c3eb30; }
 
 .cta-grid > .cta:focus-visible {
   outline: 3px solid var(--green);
@@ -467,7 +467,7 @@ h1 {
   }
 }
 
-/* Image frames: paper, fine green edges and a soft shadow */
+/* Image frames: quiet paper panels with fine edges */
 .grid2 {
   gap: 28px;
 }
@@ -477,9 +477,9 @@ h1 {
   min-width: 0;
   padding: clamp(14px, 2.5vw, 26px);
   border: 1px solid rgba(8, 97, 61, .22);
-  border-radius: 24px;
+  border-radius: 8px;
   background: #fffef9;
-  box-shadow: 0 8px 26px rgba(6, 63, 45, .06);
+  box-shadow: none;
 }
 
 .card:has(> .image-slot) > h3,
@@ -509,7 +509,7 @@ h1 {
   min-height: 0;
   padding: 5px;
   border: 1px solid rgba(8, 97, 61, .13);
-  border-radius: 15px;
+  border-radius: 4px;
   background: var(--paper);
   overflow: hidden;
 }
@@ -524,7 +524,7 @@ h1 {
   max-height: none;
   aspect-ratio: auto;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 .image-slot:empty,
@@ -564,7 +564,7 @@ h1 {
   .card:has(> .image-slot),
   .shop-map-card {
     padding: 14px;
-    border-radius: 20px;
+    border-radius: 8px;
   }
 
   .card:has(> .image-slot) > h3,
@@ -578,76 +578,69 @@ h1 {
   }
 }
 
-/* Festival introduction */
-.festival-about { padding: 44px 0 12px; }
+/* Festival introduction: open typography on the paper background */
+.festival-about { padding: clamp(52px, 8vw, 100px) 0 24px; }
 .about-card {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(26px, 5vw, 60px);
-  border: 1px solid rgba(8, 97, 61, .2);
-  border-radius: 26px;
-  background: var(--ink);
-  color: var(--white);
-  box-shadow: 0 14px 36px rgba(6, 63, 45, .12);
-}
-.about-card::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  top: -150px;
-  right: -95px;
-  border: 26px solid rgba(139, 227, 31, .18);
-  border-radius: 50%;
-  pointer-events: none;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  column-gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+  padding: 0 clamp(6px, 2vw, 24px) 40px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
 }
 .about-label {
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
   align-items: center;
-  margin: 0 0 24px;
-  color: var(--lime2);
+  margin: 0 0 28px;
+  color: var(--deep);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .12em;
 }
-.about-label span { color: #dbe8df; letter-spacing: .04em; }
+.about-label::before { content: ""; width: 26px; height: 3px; background: var(--green); }
+.about-label span { color: var(--muted); letter-spacing: .04em; }
 .about-headline {
-  margin: 0 0 24px;
-  font-family: inherit;
-  font-size: clamp(30px, 6vw, 62px);
+  grid-column: 1;
+  grid-row: 2 / 4;
+  margin: 0;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(30px, 4.5vw, 54px);
   font-weight: 900;
-  line-height: 1.5;
+  line-height: 1.65;
   letter-spacing: .01em;
 }
 .about-headline span {
-  color: var(--lime2);
-  text-decoration: underline;
-  text-decoration-color: rgba(212, 246, 63, .32);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 9px;
+  background: linear-gradient(transparent 76%, rgba(212, 246, 63, .65) 76%, rgba(212, 246, 63, .65) 94%, transparent 94%);
 }
 .about-description {
-  max-width: 48em;
-  margin: 0;
-  color: #f4f7ef;
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 2;
+  min-width: 0;
+  max-width: 38em;
+  margin: 8px 0 0;
+  color: var(--text);
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 2.1;
   white-space: pre-line;
   overflow-wrap: anywhere;
 }
-.about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 24px; }
 .about-tags span {
-  padding: 7px 12px;
-  border: 1px solid rgba(212, 246, 63, .32);
-  border-radius: 999px;
-  color: #e9f5df;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--deep);
   font-size: 12px;
   font-weight: 700;
 }
+.about-tags span::before { content: ""; width: 5px; height: 5px; background: var(--green); border-radius: 50%; }
+.festival-about + .section { padding: 28px 0 40px; }
+.section:has(> .cta-grid) { padding: 24px 0 64px; }
 @media (max-width: 700px) {
-  .festival-about { padding-top: 28px; }
-  .about-card { padding: 26px 20px; border-radius: 22px; }
-  .about-headline { font-size: clamp(28px, 8vw, 42px); }
+  .about-card { grid-template-columns: 1fr; padding: 0 8px 32px; }
+  .about-label { margin-bottom: 22px; font-size: 11px; gap: 8px 12px; }
+  .about-headline { grid-column: auto; grid-row: auto; font-size: clamp(28px, 8vw, 42px); margin-bottom: 22px; }
+  .about-description { margin: 0; }
 }
