@@ -644,3 +644,138 @@ h1 {
   .about-headline { grid-column: auto; grid-row: auto; font-size: clamp(28px, 8vw, 42px); margin-bottom: 22px; }
   .about-description { margin: 0; }
 }
+
+/* HOME poster edition: one palette, deliberately unexpected shapes. */
+.festival-poster main { overflow: clip; }
+.festival-poster .header { border-bottom: 2px solid var(--ink); }
+.festival-poster .brand { transform: rotate(-6deg); }
+.festival-poster .hero {
+  min-height: 680px;
+  min-height: min(820px, 88svh);
+  border: 3px solid var(--ink);
+  border-radius: 0 90px 0 0;
+  box-shadow: 8px 8px 0 var(--lime2);
+  margin-top: 28px;
+}
+.festival-poster .hero > img { opacity: .9; }
+.festival-poster .hero::after {
+  background: linear-gradient(180deg, rgba(6,63,45,.03) 15%, rgba(6,63,45,.3) 42%, rgba(6,63,45,.96) 100%);
+}
+.festival-poster .brush {
+  top: 9%; right: -3%; width: 46%; height: 12%;
+  transform: rotate(-15deg); background: var(--lime2);
+  clip-path: polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);
+}
+.festival-poster .hero-copy { width: calc(100% - 48px); padding: 160px 0 40px; }
+.festival-poster .hero h1 {
+  font-size: clamp(112px, 23vw, 260px); letter-spacing: -.09em;
+  line-height: 1.05; margin: 14px 0 20px;
+  transform: rotate(-6deg); transform-origin: left center;
+  text-shadow: 5px 5px 0 var(--deep);
+}
+.festival-poster .hero .kicker {
+  display: inline-block; max-width: 90%; padding: 8px 12px;
+  background: var(--lime2); color: var(--ink);
+  font-size: clamp(10px, 1.5vw, 15px); transform: rotate(-3deg);
+}
+.festival-poster .hero p { max-width: 32em; line-height: 1.8; margin-bottom: 0; }
+.hero-sticker {
+  position: absolute; z-index: 3; right: 24px; top: 32px;
+  display: grid; place-content: center; width: 130px; height: 130px;
+  background: var(--paper); color: var(--ink); border: 3px solid var(--ink);
+  border-radius: 50%; transform: rotate(12deg);
+  font-size: 23px; font-weight: 900; text-align: center; line-height: 1.4;
+  box-shadow: 5px 5px 0 var(--green);
+}
+.festival-tape {
+  display: flex; align-items: center; height: 64px; margin-top: 36px;
+  background: var(--lime2); border-block: 2px solid var(--ink);
+  transform: rotate(-2deg) scale(1.02); overflow: hidden;
+}
+.festival-tape span {
+  flex-shrink: 0; white-space: nowrap; font-size: clamp(25px,4vw,42px);
+  font-weight: 950; letter-spacing: .06em; color: var(--ink);
+}
+.festival-poster .festival-about { padding: 80px 0 30px; }
+.festival-poster .about-card {
+  position: relative; padding: 0 8px 48px; border-bottom: 3px solid var(--ink);
+  grid-template-columns: 1.2fr 1fr; column-gap: 40px;
+}
+.festival-poster .about-label {
+  width: fit-content; padding: 8px 14px; border: 2px solid var(--ink);
+  background: var(--paper); box-shadow: 4px 4px 0 var(--lime2);
+  transform: rotate(-3deg); color: var(--ink);
+}
+.festival-poster .about-label::before { display: none; }
+.festival-poster .about-headline {
+  font-family: inherit; font-size: clamp(32px,4.6vw,58px);
+  font-weight: 950; letter-spacing: -.055em; line-height: 1.65;
+}
+.festival-poster .about-headline span {
+  display: inline-block; padding: 0 10px; margin-top: 10px;
+  background: var(--ink); color: var(--lime2); transform: rotate(-4deg);
+  box-shadow: 5px 5px 0 var(--green);
+}
+.festival-poster .about-description { padding-top: 8px; }
+.festival-poster .about-tags { gap: 10px; }
+.festival-poster .about-tags span {
+  border: 1px solid var(--ink); border-radius: 50%; padding: 9px 12px;
+  transform: rotate(4deg);
+}
+.festival-poster .about-tags span:nth-child(2) { background: var(--lime2); transform: rotate(-8deg); }
+.festival-poster .about-tags span::before { display: none; }
+.festival-poster .grid2 { gap: 44px; padding: 18px 8px; }
+.festival-poster .grid2 > .card {
+  position: relative; border: 2px solid var(--ink); border-radius: 0;
+  background: var(--white); box-shadow: 7px 7px 0 var(--ink);
+  padding: clamp(16px, 3vw, 30px);
+}
+.festival-poster .grid2 > .card::after {
+  content: ""; position: absolute; width: 86px; height: 22px;
+  left: 24px; top: -12px; transform: rotate(-7deg);
+  background: var(--lime2); border-inline: 2px dashed var(--ink);
+}
+.festival-poster .grid2 > .card:nth-child(2) { border-radius: 32px 0 32px 0; box-shadow: 7px 7px 0 var(--green); }
+.festival-poster .grid2 > .card > h3 { margin-top: 10px; }
+.festival-poster .image-slot { border: 0; padding: 0; border-radius: 0; }
+.festival-poster .image-slot img { border-radius: 0; }
+.festival-poster .cta-grid { gap: 32px; padding: 12px 8px; }
+.festival-poster .cta-grid > .cta {
+  position: relative; border: 3px solid var(--ink); border-radius: 0;
+  box-shadow: 7px 7px 0 var(--green); padding: 26px 22px;
+}
+.festival-poster .cta-grid > .cta[href="/shops.html"] {
+  border-color: var(--ink); border-radius: 44px 0 44px 0; box-shadow: 7px 7px 0 var(--ink);
+}
+.festival-poster .cta-word {
+  grid-column: 1 / -1; display: block; color: var(--lime2);
+  font-size: clamp(48px, 7vw, 80px); font-weight: 950; line-height: 1;
+  letter-spacing: -.06em; transform: rotate(-5deg); transform-origin: left center;
+  margin: 4px 0 12px;
+}
+.festival-poster .cta[href="/shops.html"] .cta-word { color: var(--ink); }
+.festival-poster .cta-grid > .cta .arrow { grid-row: 2 / 4; border-radius: 0; transform: rotate(-8deg); }
+.festival-poster .footer {
+  padding: 32px 0; border-top: 3px solid var(--ink);
+  background: var(--lime2); color: var(--ink);
+}
+.festival-poster .footer b { font-family: serif; font-size: 40px; }
+@media (min-width: 850px) {
+  .festival-poster .grid2 { grid-template-columns: 1fr 1fr; align-items: start; }
+  .festival-poster .grid2 > .card:nth-child(2) { margin-top: 60px; }
+  .festival-poster .cta-grid > .cta:nth-child(2) { margin-top: 28px; }
+}
+@media (max-width: 700px) {
+  .festival-poster .navlinks { gap: 0; }
+  .festival-poster .navlinks a { padding: 10px 8px; font-size: 12px; }
+  .festival-poster .hero { min-height: 600px; min-height: max(560px, 78svh); border-radius: 0 64px 0 0; }
+  .festival-poster .hero-copy { width: calc(100% - 32px); padding-bottom: 30px; }
+  .hero-sticker { width: 96px; height: 96px; font-size: 18px; top: 24px; right: 16px; }
+  .festival-poster .hero h1 { font-size: clamp(100px, 32vw, 180px); }
+  .festival-poster .hero .kicker { font-size: 10px; letter-spacing: .06em; }
+  .festival-poster .festival-about { padding-top: 56px; }
+  .festival-poster .about-card { grid-template-columns: 1fr; }
+  .festival-poster .about-headline { font-size: clamp(28px, 8.5vw, 48px); margin-bottom: 26px; }
+  .festival-poster .about-description { padding-top: 0; }
+  .festival-poster .about-label { font-size: 10px; gap: 8px; }
+}
